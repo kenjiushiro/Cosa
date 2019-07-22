@@ -1,3 +1,4 @@
 #!/bin/bash
 git pull
-pause
+read -p "asd"
+

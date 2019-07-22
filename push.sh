@@ -2,4 +2,4 @@
 git add -A
 git commit -m "asd"
 git push -u origin master
-pause
+read -p "asd"
