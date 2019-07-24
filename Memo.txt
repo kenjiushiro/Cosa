@@ -409,3 +409,28 @@ Private Function IsProcessRunning(process As String) As Boolean
     End If
 
 End Function
+
+'CONTEXT MENUUUUUUUUUUUUUUU
+Private Sub Workbook_Deactivate()
+    On Error Resume Next
+        With Application
+            .CommandBars("Cell").Controls("DarFormato").Delete
+        End With
+    On Error GoTo 0
+End Sub
+ 
+Private Sub Workbook_SheetBeforeRightClick(ByVal sh As Object, ByVal Target As Range, Cancel As Boolean)
+    Dim cmdBtn As CommandBarButton
+    On Error Resume Next
+        With Application
+            .CommandBars("Cell").Controls("DarFormato").Delete
+            Set cmdBtn = .CommandBars("Cell").Controls.Add(Temporary:=True)
+        End With
+ 
+        With cmdBtn
+           .Caption = "DarFormato"
+           .Style = msoButtonCaption
+           .OnAction = "DarFormato"
+        End With
+    On Error GoTo 0
+End Sub
