@@ -3,11 +3,27 @@ Public Sub OpenBrowser(url as string)
     'Pide confirmacion al usuario para cerrar todos los procesos de chrome antes de comenzar (Si elige yes retorna 6, si elige no retorna 7)
      If MsgBox("The bot will close any opened chrome instances, are you sure you want to proceed?", vbYesNo + vbQuestion) = 6 Then      
 
-        'Termina todos los procesos de chrome         
-        Call taskKill("Chrome.exe")
+Private Sub TaskKill(processName As String)
+    If IsProcessRunning(processName) Then
+        Shell ("taskkill /F /IM " & processName)
+        driver.Wait 2000
+    End If
+End Sub
 
-        'Termina todos los procesos de chromedriver
-        Call taskKill("chromedriver.exe")
+Private Function IsProcessRunning(process As String) As Boolean
+    Dim objList As Object
+
+    Set objList = GetObject("winmgmts:") _
+        .ExecQuery("select * from win32_process where name='" & process & "'")
+
+    If objList.Count > 0 Then
+        IsProcessRunning = True
+    Else
+        IsProcessRunning = False
+    End If
+
+End Function
+
 
         'Opcional) Setea el usuario de la instancia de chrome
         bot.SetProfile ("C:\Users\" &  Environ("Username")  & "\AppData\Local\Google\Chrome\User Data\")
@@ -434,3 +450,39 @@ Private Sub Workbook_SheetBeforeRightClick(ByVal sh As Object, ByVal Target As R
         End With
     On Error GoTo 0
 End Sub
+
+'Incluir libreria Microsoft VBScript Regular Expressions 5.5
+Public Function ExtraerFecha(texto As String) As String
+
+    Dim reg As New RegExp
+    Dim patron As String
+    Dim reemplazo As String
+    
+    patron = fecha
+    patron = "(.+)([0-9]{2}[\/\-][0-9]{2}[\/\-][0-9]{2,4})(.+)"
+    reemplazo = "$2"
+    reg.Pattern = patron
+    
+    ExtraerFecha = reg.Test(texto)
+    If reg.Test(texto) Then
+        ExtraerFecha = reg.Replace(texto, reemplazo)
+    End If
+
+End Function
+Public Function RegExp(texto As String) As String
+
+    Dim reg As New RegExp
+    Dim patron As String
+    Dim reemplazo As String
+    
+    patron = fecha
+    patron = "a."
+    reemplazo = "$1"
+    reg.Pattern = patron
+    
+    RegExp = reg.Test(texto)
+    'If reg.Test(texto) Then
+    '    RegExp = reg.Replace(texto, reemplazo)
+    'End If
+
+End Function
