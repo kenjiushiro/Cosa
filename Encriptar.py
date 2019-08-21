@@ -32,8 +32,8 @@ if (option==1):
 elif (option == 2 ):
     mensaje = input("Desencriptar: ")
     code = int(input("Codificacion: "))
-    
     print(deencrypt(mensaje,code))
     
 
 
+2
