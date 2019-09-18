@@ -488,6 +488,10 @@ Public Function RegExp(texto As String) As String
 End Function
 
 
+
+
+
+
 Public Declare PtrSafe Function GetForegroundWindow Lib "user32" _
     () As Long
 Public Declare PtrSafe Function GetWindowText Lib "user32" _
@@ -503,3 +507,23 @@ Function GetActiveWindowName()
     WinText = Left(WinText, InStr(1, WinText, vbNullChar) - 1)
     Debug.Print L, WinText
 End Function
+
+
+
+
+
+
+Public Declare PtrSafe Function GetCursorPos Lib "user32" (lpPoint As POINTAPI) As Long
+' Create custom variable that holds two integers
+Type POINTAPI
+   Xcoord As Long
+   Ycoord As Long
+End Type
+
+Sub GetCursorPosDemo()
+Dim llCoord As POINTAPI
+' Get the cursor positions
+GetCursorPos llCoord
+' Display the cursor position coordinates
+MsgBox "X Position: " & llCoord.Xcoord & vbNewLine & "Y Position: " & llCoord.Ycoord
+End Sub
