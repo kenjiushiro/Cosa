@@ -46,24 +46,24 @@ End Function
     End If
 End Sub
 
-
+==================================================================================================================================================================================================================================================
 Public Sub taskKill(sTaskName)
 'Cierra todos los procesos con el nombre sTaskName (es case sensitive)
     Dim aux As Integer
     aux = CreateObject("WScript.Shell").Run("taskkill /f /im " & sTaskName, 0, True)
 End Sub
-
+==================================================================================================================================================================================================================================================
 Public Sub zoomFix()
     AppActivate ("Chrome")
     Application.SendKeys ("^0")
 End Sub
 
-
+==================================================================================================================================================================================================================================================
 Public ele As WebElement
 Public i As Integer
 Set ele = bot.FindElementById("buttonID")
 i = ele.ExecuteScript("arguments[0].click();", ele)
-
+==================================================================================================================================================================================================================================================
 'Loop through folders
 Sub LoopThroughFolders()
 
@@ -76,7 +76,7 @@ Sub LoopThroughFolders()
     DoFolder FileSystem.GetFolder(HostFolder)
 
 End Sub
-
+==================================================================================================================================================================================================================================================
 Sub DoFolder(Folder)
     Dim SubFolder
     Dim File
@@ -91,7 +91,7 @@ Sub DoFolder(Folder)
     Next
 
 End Sub
-
+==================================================================================================================================================================================================================================================
 ' Date functions
 
 Private Function GetWeek(MyTeDate As String) As String
@@ -114,40 +114,10 @@ Private Function GetWeek(MyTeDate As String) As String
     Case Is = "Sun"
         GetWeek = DateAdd("m", 1, MyTeDate)
 End Function
-
-Private Function GetMonth(MyTeDate As String) As String
-    Select Case Mid(MyTeDate, 4, 3)
-        Case Is = "Jan"
-            GetMonth = "January"
-        Case Is = "Feb"
-            GetMonth = "February"
-        Case Is = "Mar"
-            GetMonth = "March"
-        Case Is = "Apr"
-            GetMonth = "April"
-        Case Is = "May"
-            GetMonth = "May"
-        Case Is = "Jun"
-            GetMonth = "June"
-        Case Is = "Jul"
-            GetMonth = "July"
-        Case Is = "Aug"
-            GetMonth = "August"
-        Case Is = "Sep"
-            GetMonth = "September"
-        Case Is = "Oct"
-            GetMonth = "October"
-        Case Is = "Nov"
-            GetMonth = "November"
-        Case Is = "Dec"
-            GetMonth = "December"
-    End Select
-    
-End Function
-
+=================================================================================================================================================================================================================================================
 
 sort by 2 columns
-
+==================================================================================================================================================================================================================================================
 Sub SortRawDataTable()
     rawDataSh.Activate
 
@@ -157,7 +127,7 @@ Sub SortRawDataTable()
         , Order2:=xlAscending, Header:=xlYes, OrderCustom:=1, MatchCase:= _
         False, Orientation:=xlTopToBottom
 End Sub
-
+==================================================================================================================================================================================================================================================
 Private Function CleanAmount(totalAmount As String)
     'Borra todos los caracteres que no pertenecen al precio
     Const SpecialCharacters As String = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,_, ,"
@@ -173,7 +143,7 @@ Private Function CleanAmount(totalAmount As String)
    
     CleanAmount = newString
 End Function
-
+==================================================================================================================================================================================================================================================
 
 ' Buscar archivos por nombre en una carpeta
 Function GetFiles(inputDirectoryToScanForFile, filenameCriteria) As String
@@ -187,7 +157,7 @@ Function GetFiles(inputDirectoryToScanForFile, filenameCriteria) As String
 
     Loop
 End Function
-
+==================================================================================================================================================================================================================================================
 'check if a window exists
 Private Declare PtrSafe Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
 or
@@ -201,10 +171,10 @@ Sub WinExist(windowName As String)
          MsgBox ("Hwnd of window is: " & WinHwnd)
     End If
 End Sub
-
+==================================================================================================================================================================================================================================================
 buscar en columna
 Set Existe = Columns(MyTeEIDColumnNumber).Find(EnterpriseID, lookat:=xlWhole)
-
+==================================================================================================================================================================================================================================================
 'Check if file exists
 Function FileExists(path As String) As Boolean
     Dim fsoFSO
@@ -212,7 +182,7 @@ Function FileExists(path As String) As Boolean
     FileExists = fsoFSO.FileExists(path)
        
 End Function
-
+==================================================================================================================================================================================================================================================
 'Set workbook if exists, else returns nothing
 Function GetWorkbook(ByVal sFullName As String) As Workbook
 
@@ -234,7 +204,7 @@ Function GetWorkbook(ByVal sFullName As String) As Workbook
 End Function
 
 
-
+==================================================================================================================================================================================================================================================
 'Download images
 
 Public Declare Function URLDownloadToFile Lib "urlmon" Alias _
@@ -243,7 +213,7 @@ Public Declare Function URLDownloadToFile Lib "urlmon" Alias _
    ByVal szFileName As String, _
    ByVal dwReserved As Long, _
    ByVal lpfnCB As Long) As Long
-
+==================================================================================================================================================================================================================================================
 Public Sub GURoL(url As String, FileName As String)
 Dim lngRetVal As Long
     lngRetVal = URLDownloadToFile(0, url, FileName, 0, 0)
@@ -251,7 +221,7 @@ Dim lngRetVal As Long
     MsgBox "GURol godo: Can't download from " & url & " to " & FileName
     End If
 End Sub
-
+==================================================================================================================================================================================================================================================
 
 Public Function GetWorkbook(ByVal sFullName As String) As Workbook
 
@@ -271,7 +241,7 @@ Public Function GetWorkbook(ByVal sFullName As String) As Workbook
     Set GetWorkbook = wbReturn
 
 End Function
-
+==================================================================================================================================================================================================================================================
 Sub SelectFile()
     Call SetThisWb
     Dim SelectFile As FileDialog
@@ -284,7 +254,7 @@ Sub SelectFile()
         thisSh.Range("C14").Value = SelectFile.SelectedItems(1)
     End If
 End Sub
-
+==================================================================================================================================================================================================================================================
 Private Sub CreateFolder(folderPath As String)
     Dim fsoFSO
     Set fsoFSO = CreateObject("Scripting.FileSystemObject")
@@ -292,7 +262,7 @@ Private Sub CreateFolder(folderPath As String)
        MkDir folderPath
     End If
 End Sub
-
+==================================================================================================================================================================================================================================================
 
 Sub ArrastrarFormatoCeldas()
     Dim lastRow As Long
@@ -302,13 +272,13 @@ Sub ArrastrarFormatoCeldas()
     FTESh.Range("M2").AutoFill FTESh.Range("M2:M" & lastRow), xlFillDefault
     FTESh.Range("L2:L" & lastRow).Value = MonthName(Month(Now), True)
 End Sub
-
+==================================================================================================================================================================================================================================================
 Function Col_Letter(lngCol As Long) As String
     Dim vArr
     vArr = Split(Cells(1, lngCol).Address(True, False), "$")
     Col_Letter = vArr(0)
 End Function
-
+==================================================================================================================================================================================================================================================
 
 Private Function GetColumnNumber(hoja As Worksheet, columnName As String, Optional headerRow As Long = 1) As Long
     Dim columnAux As Long
@@ -325,7 +295,7 @@ Private Function GetColumnNumber(hoja As Worksheet, columnName As String, Option
 End Function
 
 
-
+==================================================================================================================================================================================================================================================
 'change site attributes
 
     Set ele = bot.FindElementByXPath("//*[@id='locationslider']")
@@ -335,7 +305,7 @@ End Function
 	'Relative xPaths
 	https://www.w3schools.com/xml/xpath_axes.asp
 	
-	
+==================================================================================================================================================================================================================================================
 Function RangetoHTML(rng As Range)
 ' Changed by Ron de Bruin 28-Oct-2006
 ' Working in Office 2000-2016
@@ -389,7 +359,7 @@ Function RangetoHTML(rng As Range)
     Set fso = Nothing
     Set TempWB = Nothing
 End Function
-
+==================================================================================================================================================================================================================================================
 
 Private Sub SaveRngAsJPG(Rng As Range, FileName As String)
     Dim Cht As Chart, bScreen As Boolean, Shp As Shape
@@ -411,7 +381,7 @@ Private Sub SaveRngAsJPG(Rng As Range, FileName As String)
     Application.ScreenUpdating = bScreen
 End Sub
 
-
+==================================================================================================================================================================================================================================================
 Private Function IsProcessRunning(process As String) As Boolean
     Dim objList As Object
 
@@ -425,7 +395,7 @@ Private Function IsProcessRunning(process As String) As Boolean
     End If
 
 End Function
-
+==================================================================================================================================================================================================================================================
 'CONTEXT MENUUUUUUUUUUUUUUU
 Private Sub Workbook_Deactivate()
     On Error Resume Next
@@ -434,7 +404,7 @@ Private Sub Workbook_Deactivate()
         End With
     On Error GoTo 0
 End Sub
- 
+ ==================================================================================================================================================================================================================================================
 Private Sub Workbook_SheetBeforeRightClick(ByVal sh As Object, ByVal Target As Range, Cancel As Boolean)
     Dim cmdBtn As CommandBarButton
     On Error Resume Next
@@ -450,7 +420,7 @@ Private Sub Workbook_SheetBeforeRightClick(ByVal sh As Object, ByVal Target As R
         End With
     On Error GoTo 0
 End Sub
-
+==================================================================================================================================================================================================================================================
 'Incluir libreria Microsoft VBScript Regular Expressions 5.5
 Public Function ExtraerFecha(texto As String) As String
 
@@ -469,6 +439,10 @@ Public Function ExtraerFecha(texto As String) As String
     End If
 
 End Function
+
+==================================================================================================================================================================================================================================================
+
+
 Public Function RegExp(texto As String) As String
 
     Dim reg As New RegExp
@@ -486,11 +460,7 @@ Public Function RegExp(texto As String) As String
     'End If
 
 End Function
-
-
-
-
-
+==================================================================================================================================================================================================================================================
 
 Public Declare PtrSafe Function GetForegroundWindow Lib "user32" _
     () As Long
@@ -509,7 +479,7 @@ Function GetActiveWindowName()
 End Function
 
 
-
+==================================================================================================================================================================================================================================================
 
 
 
@@ -527,3 +497,68 @@ GetCursorPos llCoord
 ' Display the cursor position coordinates
 MsgBox "X Position: " & llCoord.Xcoord & vbNewLine & "Y Position: " & llCoord.Ycoord
 End Sub
+
+==================================================================================================================================================================================================================================================
+
+'MAILSSSSSSSSSSSSSSSSSSSSS
+'libreria Microsoft outlook 16.0 object library
+
+Sub GetMails()
+    Dim olApp As New Outlook.Application
+    Dim olNs As Namespace
+    Set olNs = olApp.GetNamespace("MAPI")
+    Dim receivedSh As Worksheet
+    Set receivedSh = ThisWorkbook.Sheets("Received")
+    
+    
+    Dim olInbox As MAPIFolder
+    Set olInbox = olNs.GetDefaultFolder(olFolderInbox)
+    
+    Dim filter As String
+    
+    'filter = "@SQL=" & Chr(34) & "urn:schemas:httpmail:hasattachment" & _
+    '                   Chr(34) & "=1 AND " & _
+    '                   Chr(34) & "urn:schemas:httpmail:read" & _
+    '                   Chr(34) & "=0"
+                       
+    filter = "@SQL=" & Chr(34) & "urn:schemas:httpmail:read" & _
+                       Chr(34) & "=0"
+                       
+    Dim mail As Outlook.MailItem
+    Dim mailObj As Object
+    
+    'Loop through every unread item
+    For Each mailObj In olInbox.Items.Restrict(filter)
+        If mailObj.Class = olMail Then
+            Set mail = mailObj
+            corpo = mail.body
+            Call ListMail(receivedSh, mail.subject, mail.SenderEmailAddress, mail.HTMLBody)
+            mail.UnRead = True
+        End If
+    Next mailObj
+End Sub
+==================================================================================================================================================================================================================================================
+'ARRAAAAAAAAAAYS
+
+Dim arr As Variant
+Dim linea As Variant
+
+
+arr = Sheet1.Range("A1").CurrentRegion
+
+==================================================================================================================================================================================================================================================
+
+Dim arr As Variant
+Dim linea As Variant
+
+arr = Split(mail.HTMLBody, vbCrLf)
+For Each linea In arr
+	If linea <> "" Then
+		Debug.Print linea
+	End If
+Next linea
+
+
+
+
+
