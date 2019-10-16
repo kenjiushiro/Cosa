@@ -421,6 +421,16 @@ Private Sub Workbook_SheetBeforeRightClick(ByVal sh As Object, ByVal Target As R
     On Error GoTo 0
 End Sub
 ==================================================================================================================================================================================================================================================
+Function Suma(ParamArray aArgumentsArray() As Variant) As String
+
+    Dim vArg As Variant
+    Suma = ""
+    For Each vArg In aArgumentsArray
+       Suma = Suma & vArg
+       
+    Next vArg
+End Function
+==================================================================================================================================================================================================================================================
 'Incluir libreria Microsoft VBScript Regular Expressions 5.5
 Public Function ExtraerFecha(texto As String) As String
 
