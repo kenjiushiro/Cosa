@@ -1,0 +1,6 @@
+C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Excepciones\bin\Debug\Excepciones.dll
+C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Excepciones\bin\Debug\Excepciones.pdb
+C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Excepciones\obj\Debug\Excepciones.csprojAssemblyReference.cache
+C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Excepciones\obj\Debug\Excepciones.csproj.CoreCompileInputs.cache
+C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Excepciones\obj\Debug\Excepciones.dll
+C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Excepciones\obj\Debug\Excepciones.pdb
