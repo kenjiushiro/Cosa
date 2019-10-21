@@ -24,3 +24,33 @@ C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSe
 C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.sugusParametersForm.resources
 C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Forms\bin\Debug\SUGUS.dll
 C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Forms\bin\Debug\SUGUS.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Forms.exe.config
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Forms.exe
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Forms.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Archivos.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Clases.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Excepciones.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Microsoft.WindowsAPICodePack.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\SUGUS.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\WebDriver.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\IronWebScraper.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Newtonsoft.Json.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Archivos.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Clases.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Excepciones.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\SUGUS.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Microsoft.WindowsAPICodePack.xml
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\WebDriver.xml
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\IronWebScraper.xml
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.csprojAssemblyReference.cache
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.chromedriverSelector.resources
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.Properties.Resources.resources
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.sugusParametersForm.resources
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.csproj.GenerateResource.cache
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.csproj.CoreCompileInputs.cache
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.csproj.CopyComplete
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.exe
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.FormMostrarElementos.resources

@@ -7,3 +7,12 @@ C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSe
 C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Archivos\bin\Debug\Excepciones.dll
 C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Archivos\bin\Debug\Excepciones.pdb
 C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.csproj.CopyComplete
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\bin\Debug\Archivos.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\bin\Debug\Archivos.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\bin\Debug\Excepciones.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\bin\Debug\Excepciones.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.csprojAssemblyReference.cache
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.csproj.CoreCompileInputs.cache
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.csproj.CopyComplete
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.pdb

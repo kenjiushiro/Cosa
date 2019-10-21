@@ -11,3 +11,19 @@ C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSe
 C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.csproj.CopyComplete
 C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.dll
 C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\SUGUS.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\SUGUS.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Clases.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\WebDriver.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\IronWebScraper.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Excepciones.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Newtonsoft.Json.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Clases.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\WebDriver.xml
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\IronWebScraper.xml
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Excepciones.pdb
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.csprojAssemblyReference.cache
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.csproj.CoreCompileInputs.cache
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.csproj.CopyComplete
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.dll
+D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.pdb

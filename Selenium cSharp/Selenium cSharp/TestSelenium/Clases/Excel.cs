@@ -64,11 +64,21 @@ namespace Clases
         }
         public string Range(long row, long col)
         {
-            return sh.Cells[row, col].Value2;
-
+            return (string)sh.Cells[row, col].Value;
         }
 
+        public void Close()
+        {
+            wb.Close();
+        }
 
         
+
+
+
+
+
+
+
     }
 }

@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -23,11 +24,18 @@ namespace Forms
     public partial class chromedriverSelector : Form
     {
         static AppDataFile<string> appDataFile;
-        
+        public delegate void DelegadoLabel(string texto);
+        public event DelegadoLabel progressLabel;
+
+
+
         static AppDataFile<ExcelParameters> binaryFile;
         sugusParametersForm sugusParameters;
         protected ExcelParameters excelParameters;
         MyScheduling myScheduling;
+        int numero = 89;
+        Thread bot;
+
         public chromedriverSelector()
         {
             InitializeComponent();
@@ -106,10 +114,8 @@ namespace Forms
         }
 
         private void Button1_Click_1(object sender, EventArgs e)
-        {
-            myScheduling = new MyScheduling(txtChromedriverPath.Text, "https://myscheduling.accenture.com/ProjectExec#/home");
-
-            MessageBox.Show(myScheduling.ChromeVersion);
+        {   
+            
         }
 
         private void BtnSelectFile_Click(object sender, EventArgs e)
@@ -137,17 +143,139 @@ namespace Forms
         private void BtnDriverVersion_Click(object sender, EventArgs e)
         {
             string chromedriverVersion;
-            myScheduling = new MyScheduling(txtChromedriverPath.Text);
-            chromedriverVersion = myScheduling.DriverVersion;
+            string browserVersion;
 
-            myScheduling.Close();
-            MessageBox.Show("Chromedriver version: " + chromedriverVersion);
+            if(myScheduling==null)
+            {
+                myScheduling = new MyScheduling(txtChromedriverPath.Text,false);
+                chromedriverVersion = myScheduling.DriverVersion;
+                browserVersion = myScheduling.ChromeVersion;
+                myScheduling.Close();
+            }
+            else
+            {
+                chromedriverVersion = myScheduling.DriverVersion;
+                browserVersion = myScheduling.ChromeVersion;
+            }
+
+
+
+
+            MessageBox.Show("Chromedriver version: " + chromedriverVersion + "\n" + "Chrome browser version: " + browserVersion);
 
         }
 
         private void BtnTest_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(myScheduling.BrowserName);
+
         }
+
+
+        private void BtnEnd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bot.Abort();
+            }
+            catch(Exception)
+            {
+                bot.Resume();
+            }
+            finally
+            {
+                myScheduling.Close();
+            }
+        }
+
+
+        private void BtnRunBot_Click(object sender, EventArgs e)
+        {
+            //myScheduling = new MyScheduling(txtChromedriverPath.Text, "https://myscheduling.accenture.com/ProjectExec#/home");
+            myScheduling = new MyScheduling(txtChromedriverPath.Text, "https://www.google.com",false);
+            myScheduling.CambioElemento += CambiarLabel;
+            if(!MyScheduling.QueueCreated)
+                MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName);
+
+            bot = new Thread(myScheduling.DoStuff);
+            bot.Start();
+        }
+
+        private void BtnThreadState_Click(object sender, EventArgs e)
+        {
+            if(bot!=null && bot.IsAlive)
+                MessageBox.Show("Running");
+            else
+                MessageBox.Show("Ded");
+        }
+
+        private void BtnResume_Click(object sender, EventArgs e)
+        {
+            bot.Resume();
+        }
+
+        private void BtnPause_Click(object sender, EventArgs e)
+        {
+            bot.Suspend();
+
+        }
+
+        private void BtnBmf_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void BtnAlertAccept_Click(object sender, EventArgs e)
+        {
+            myScheduling.AcceptAlert();
+        }
+
+        private void BtnAlertDismiss_Click(object sender, EventArgs e)
+        {
+            myScheduling.DismissAlert();
+        }
+
+        private void BtnAlertRead_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(myScheduling.Alerta);
+        }
+
+        private void BtnPeek_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(myScheduling.NextElement + "");
+        }
+
+
+
+
+        public void CambiarLabel(string texto)
+        {
+            if (this.lblProgress.InvokeRequired)
+            {
+                this.lblProgress.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    this.lblProgress.Text = texto;
+                }
+                );
+            }
+            else
+            {
+                this.lblProgress.Text = texto;
+            }
+        }
+
+        private void BtnShowData_Click(object sender, EventArgs e)
+        {
+            if (!MyScheduling.QueueCreated)
+                MessageBox.Show("File was not read yet");
+            else
+                MessageBox.Show("ASDASD");
+        }
+
+        private void BtnReadFile_Click(object sender, EventArgs e)
+        {
+            if (!MyScheduling.QueueCreated)
+                MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName);
+        }
+
+        
     }
 }
