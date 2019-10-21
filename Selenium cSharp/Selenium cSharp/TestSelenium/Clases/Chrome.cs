@@ -74,7 +74,7 @@ namespace Clases
         #endregion
 
         #region Propiedades
-        public Queue<T> Elementos
+        public static Queue<T> Elementos
         {
             set
             {

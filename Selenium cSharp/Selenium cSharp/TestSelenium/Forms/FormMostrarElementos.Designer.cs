@@ -28,31 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listviewElementos = new System.Windows.Forms.ListView();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView1
+            // listviewElementos
             // 
-            this.listView1.Location = new System.Drawing.Point(12, 12);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(767, 426);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listviewElementos.Location = new System.Drawing.Point(12, 12);
+            this.listviewElementos.Name = "listviewElementos";
+            this.listviewElementos.Size = new System.Drawing.Size(776, 383);
+            this.listviewElementos.TabIndex = 0;
+            this.listviewElementos.UseCompatibleStateImageBehavior = false;
+            this.listviewElementos.View = System.Windows.Forms.View.Details;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(13, 401);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(176, 37);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // FormMostrarElementos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.listviewElementos);
             this.Name = "FormMostrarElementos";
             this.Text = "FormMostrarElementos";
+            this.Load += new System.EventHandler(this.FormMostrarElementos_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listviewElementos;
+        private System.Windows.Forms.Button btnClose;
     }
 }

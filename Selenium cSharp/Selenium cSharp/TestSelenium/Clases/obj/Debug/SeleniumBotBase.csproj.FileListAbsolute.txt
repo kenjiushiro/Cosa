@@ -24,24 +24,12 @@ C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSe
 C:\Users\kenji.martin.ushiro\OneDrive - Accenture\Backups\Selenium cSharp\TestSelenium\Clases\obj\Debug\Clases.pdb
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Clases.dll
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Clases.pdb
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\ExcelApi.dll
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\ExcelDataReader.dll
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Excepciones.dll
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\IronWebScraper.dll
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\NetOffice.dll
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\OfficeApi.dll
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\VBIDEApi.dll
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\WebDriver.dll
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Newtonsoft.Json.dll
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\stdole.dll
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Excepciones.pdb
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\ExcelApi.xml
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\ExcelDataReader.pdb
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\ExcelDataReader.xml
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\IronWebScraper.xml
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\NetOffice.xml
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\OfficeApi.xml
-D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\VBIDEApi.xml
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\WebDriver.xml
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\obj\Debug\SeleniumBotBase.csprojAssemblyReference.cache
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\obj\Debug\SeleniumBotBase.csproj.ResolveComReference.cache

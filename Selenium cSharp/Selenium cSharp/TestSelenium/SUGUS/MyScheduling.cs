@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Threading;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace SUGUS
 {
@@ -39,39 +41,46 @@ namespace SUGUS
         #endregion
 
         #region Metodos
-        public static void LeerData(string inputFilePath,string sheetName)
+        public static string LeerData(string inputFilePath,string sheetName)
         {
             Excel excel = new Excel(inputFilePath, sheetName);
-            RolDemanda rol;
-            long i;
-            string id;
-            string cliente;
-            string specialty;
-            Queue<RolDemanda> roles = new Queue<RolDemanda>();
-
-            for (i = 2; i <= 13; i++)
+            try
             {
-                id = excel.Range(i, 1);
-                cliente = excel.Range(i, 2);
-                specialty = excel.Range(i, 3);
-                rol = new RolDemanda(id, cliente, specialty);
-                roles = roles + rol; 
+                RolDemanda rol;
+                long i;
+                string id;
+                string cliente;
+                string specialty;
+                Queue<RolDemanda> roles = new Queue<RolDemanda>();
+
+                for (i = 2; i <= 13; i++)
+                {
+                    id = excel.Range(i, 1);
+                    cliente = excel.Range(i, 2);
+                    specialty = excel.Range(i, 3);
+                    rol = new RolDemanda(id, cliente, specialty);
+                    roles = roles + rol;
+                }
+                elementos = roles;
             }
-            elementos = roles;
-            excel.Close();
+            catch (Exception)
+            { }
+            finally
+            {
+                excel.Close();
+            }
+            if (elementos != null)
+                return "File was read succesfully";
+            return "File could not be read";
         }
-
-
-
-
 
         public void DoStuff()
         {
             RolDemanda rol;
-            foreach(var elemento in base.Elementos.ToList())
+            foreach(var elemento in Elementos.ToList())
             {
                 Thread.Sleep(1000);
-                rol = base.Elementos.Dequeue();
+                rol = Elementos.Dequeue();
                 this.Driver.FindElement(By.Name("q")).Clear();
                 base.EventoCambio(rol.ToString());
                 

@@ -215,7 +215,20 @@ namespace Forms
 
         private void BtnPause_Click(object sender, EventArgs e)
         {
-            bot.Suspend();
+            if (bot != null && bot.IsAlive)
+                try
+                {
+                    bot.Suspend();
+                }
+                catch(Exception)
+                {
+                  
+                }
+            else
+                MessageBox.Show("The bot is not running");
+
+
+
 
         }
 
@@ -225,22 +238,47 @@ namespace Forms
 
         private void BtnAlertAccept_Click(object sender, EventArgs e)
         {
-            myScheduling.AcceptAlert();
+            try
+            {
+                myScheduling.AcceptAlert();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Alert not found");
+            }
         }
 
         private void BtnAlertDismiss_Click(object sender, EventArgs e)
         {
-            myScheduling.DismissAlert();
+            try
+            {
+                myScheduling.DismissAlert();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Alert not found");
+            }
         }
+
 
         private void BtnAlertRead_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(myScheduling.Alerta);
+            try
+            {
+                MessageBox.Show(myScheduling.Alerta);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Alert not found");
+            }
         }
 
         private void BtnPeek_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(myScheduling.NextElement + "");
+            if (bot != null && bot.IsAlive)
+                MessageBox.Show(myScheduling.NextElement + "");
+            else
+                MessageBox.Show("The bot is not running");
         }
 
 
@@ -267,13 +305,26 @@ namespace Forms
             if (!MyScheduling.QueueCreated)
                 MessageBox.Show("File was not read yet");
             else
-                MessageBox.Show("ASDASD");
+            {
+                FormMostrarElementos formElementos = new FormMostrarElementos();
+                foreach (RolDemanda rol in MyScheduling.Elementos)
+                {
+                    formElementos.AddItem(rol.ID, rol.Cliente, rol.Specialty);
+                }
+                formElementos.AddHeader("ID");
+                formElementos.AddHeader("Cliente");
+                formElementos.AddHeader("Specialty");
+                formElementos.Show();
+
+            }
         }
 
         private void BtnReadFile_Click(object sender, EventArgs e)
         {
             if (!MyScheduling.QueueCreated)
-                MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName);
+                MessageBox.Show(MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName));
+            
+           
         }
 
         
