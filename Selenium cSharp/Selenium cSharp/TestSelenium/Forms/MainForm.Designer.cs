@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnSelect = new System.Windows.Forms.Button();
             this.txtChromedriverPath = new System.Windows.Forms.TextBox();
             this.lblInstrucciones = new System.Windows.Forms.Label();
@@ -56,6 +57,11 @@
             this.lblThreading = new System.Windows.Forms.Label();
             this.lblExcelReading = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.contextMenuValidar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.validateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.radioUser = new System.Windows.Forms.RadioButton();
+            this.radioNew = new System.Windows.Forms.RadioButton();
+            this.contextMenuValidar.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSelect
@@ -70,6 +76,7 @@
             // 
             // txtChromedriverPath
             // 
+            this.txtChromedriverPath.ContextMenuStrip = this.contextMenuValidar;
             this.txtChromedriverPath.Location = new System.Drawing.Point(12, 35);
             this.txtChromedriverPath.Name = "txtChromedriverPath";
             this.txtChromedriverPath.ReadOnly = true;
@@ -118,6 +125,7 @@
             // 
             // txtInputFile
             // 
+            this.txtInputFile.ContextMenuStrip = this.contextMenuValidar;
             this.txtInputFile.Location = new System.Drawing.Point(12, 61);
             this.txtInputFile.Name = "txtInputFile";
             this.txtInputFile.ReadOnly = true;
@@ -318,11 +326,50 @@
             this.progressBar1.TabIndex = 27;
             this.progressBar1.Click += new System.EventHandler(this.ProgressBar1_Click);
             // 
+            // contextMenuValidar
+            // 
+            this.contextMenuValidar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.validateToolStripMenuItem});
+            this.contextMenuValidar.Name = "contextMenuValidar";
+            this.contextMenuValidar.Size = new System.Drawing.Size(116, 26);
+            this.contextMenuValidar.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuValidar_Opening);
+            // 
+            // validateToolStripMenuItem
+            // 
+            this.validateToolStripMenuItem.Name = "validateToolStripMenuItem";
+            this.validateToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.validateToolStripMenuItem.Text = "Validate";
+            this.validateToolStripMenuItem.Click += new System.EventHandler(this.ValidateToolStripMenuItem_Click);
+            // 
+            // radioUser
+            // 
+            this.radioUser.AutoSize = true;
+            this.radioUser.Location = new System.Drawing.Point(251, 296);
+            this.radioUser.Name = "radioUser";
+            this.radioUser.Size = new System.Drawing.Size(85, 17);
+            this.radioUser.TabIndex = 29;
+            this.radioUser.TabStop = true;
+            this.radioUser.Text = "User session";
+            this.radioUser.UseVisualStyleBackColor = true;
+            // 
+            // radioNew
+            // 
+            this.radioNew.AutoSize = true;
+            this.radioNew.Location = new System.Drawing.Point(251, 319);
+            this.radioNew.Name = "radioNew";
+            this.radioNew.Size = new System.Drawing.Size(85, 17);
+            this.radioNew.TabIndex = 30;
+            this.radioNew.TabStop = true;
+            this.radioNew.Text = "New session";
+            this.radioNew.UseVisualStyleBackColor = true;
+            // 
             // chromedriverSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 351);
+            this.Controls.Add(this.radioNew);
+            this.Controls.Add(this.radioUser);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblExcelReading);
             this.Controls.Add(this.lblThreading);
@@ -352,6 +399,7 @@
             this.Name = "chromedriverSelector";
             this.Text = "Select chromedriver";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.contextMenuValidar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,6 +435,10 @@
         private System.Windows.Forms.Label lblThreading;
         private System.Windows.Forms.Label lblExcelReading;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuValidar;
+        private System.Windows.Forms.ToolStripMenuItem validateToolStripMenuItem;
+        private System.Windows.Forms.RadioButton radioUser;
+        private System.Windows.Forms.RadioButton radioNew;
     }
 }
 

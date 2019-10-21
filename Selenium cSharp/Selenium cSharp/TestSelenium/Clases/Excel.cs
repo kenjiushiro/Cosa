@@ -43,6 +43,10 @@ namespace Clases
             {
                 throw new WorksheetNotFound("The worksheet " + sheet  + " could not be found");
             }
+            finally
+            {
+                wb.Close();
+            }
 
         }
 
@@ -69,7 +73,14 @@ namespace Clases
 
         public void Close()
         {
-            wb.Close();
+            try
+            {
+                wb.Close();
+            }
+            catch(Exception)
+            {
+
+            }
         }
 
         

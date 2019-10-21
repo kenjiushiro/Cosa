@@ -63,8 +63,10 @@ namespace SUGUS
                 }
                 elementos = roles;
             }
-            catch (Exception)
-            { }
+            catch (Exception e)
+            {
+                throw e;
+            }
             finally
             {
                 excel.Close();
