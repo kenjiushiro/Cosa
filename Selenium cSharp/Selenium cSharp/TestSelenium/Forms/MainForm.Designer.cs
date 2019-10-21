@@ -52,6 +52,10 @@
             this.btnReadFile = new System.Windows.Forms.Button();
             this.btnShowData = new System.Windows.Forms.Button();
             this.btnEnd = new System.Windows.Forms.Button();
+            this.lblAlertas = new System.Windows.Forms.Label();
+            this.lblThreading = new System.Windows.Forms.Label();
+            this.lblExcelReading = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // btnSelect
@@ -94,7 +98,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(21, 319);
+            this.btnGuardar.Location = new System.Drawing.Point(11, 293);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(139, 20);
             this.btnGuardar.TabIndex = 3;
@@ -104,7 +108,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(183, 319);
+            this.btnCancel.Location = new System.Drawing.Point(11, 319);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(139, 20);
             this.btnCancel.TabIndex = 4;
@@ -162,7 +166,7 @@
             // 
             // btnThreadState
             // 
-            this.btnThreadState.Location = new System.Drawing.Point(491, 176);
+            this.btnThreadState.Location = new System.Drawing.Point(491, 170);
             this.btnThreadState.Name = "btnThreadState";
             this.btnThreadState.Size = new System.Drawing.Size(139, 20);
             this.btnThreadState.TabIndex = 12;
@@ -182,7 +186,7 @@
             // 
             // btnResume
             // 
-            this.btnResume.Location = new System.Drawing.Point(491, 150);
+            this.btnResume.Location = new System.Drawing.Point(491, 144);
             this.btnResume.Name = "btnResume";
             this.btnResume.Size = new System.Drawing.Size(139, 20);
             this.btnResume.TabIndex = 14;
@@ -202,7 +206,7 @@
             // 
             // btnAlertAccept
             // 
-            this.btnAlertAccept.Location = new System.Drawing.Point(21, 115);
+            this.btnAlertAccept.Location = new System.Drawing.Point(21, 124);
             this.btnAlertAccept.Name = "btnAlertAccept";
             this.btnAlertAccept.Size = new System.Drawing.Size(139, 20);
             this.btnAlertAccept.TabIndex = 16;
@@ -212,7 +216,7 @@
             // 
             // btnAlertDismiss
             // 
-            this.btnAlertDismiss.Location = new System.Drawing.Point(21, 141);
+            this.btnAlertDismiss.Location = new System.Drawing.Point(21, 150);
             this.btnAlertDismiss.Name = "btnAlertDismiss";
             this.btnAlertDismiss.Size = new System.Drawing.Size(139, 20);
             this.btnAlertDismiss.TabIndex = 17;
@@ -222,7 +226,7 @@
             // 
             // btnAlertRead
             // 
-            this.btnAlertRead.Location = new System.Drawing.Point(21, 167);
+            this.btnAlertRead.Location = new System.Drawing.Point(21, 176);
             this.btnAlertRead.Name = "btnAlertRead";
             this.btnAlertRead.Size = new System.Drawing.Size(139, 20);
             this.btnAlertRead.TabIndex = 18;
@@ -232,7 +236,7 @@
             // 
             // btnPeek
             // 
-            this.btnPeek.Location = new System.Drawing.Point(343, 118);
+            this.btnPeek.Location = new System.Drawing.Point(334, 196);
             this.btnPeek.Name = "btnPeek";
             this.btnPeek.Size = new System.Drawing.Size(139, 20);
             this.btnPeek.TabIndex = 19;
@@ -243,15 +247,15 @@
             // lblProgress
             // 
             this.lblProgress.AutoSize = true;
-            this.lblProgress.Location = new System.Drawing.Point(183, 235);
+            this.lblProgress.Location = new System.Drawing.Point(331, 118);
             this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(35, 13);
+            this.lblProgress.Size = new System.Drawing.Size(89, 13);
             this.lblProgress.TabIndex = 20;
-            this.lblProgress.Text = "label1";
+            this.lblProgress.Text = "Current work item";
             // 
             // btnReadFile
             // 
-            this.btnReadFile.Location = new System.Drawing.Point(343, 293);
+            this.btnReadFile.Location = new System.Drawing.Point(343, 269);
             this.btnReadFile.Name = "btnReadFile";
             this.btnReadFile.Size = new System.Drawing.Size(139, 20);
             this.btnReadFile.TabIndex = 21;
@@ -261,7 +265,7 @@
             // 
             // btnShowData
             // 
-            this.btnShowData.Location = new System.Drawing.Point(491, 293);
+            this.btnShowData.Location = new System.Drawing.Point(491, 269);
             this.btnShowData.Name = "btnShowData";
             this.btnShowData.Size = new System.Drawing.Size(139, 20);
             this.btnShowData.TabIndex = 22;
@@ -271,7 +275,7 @@
             // 
             // btnEnd
             // 
-            this.btnEnd.Location = new System.Drawing.Point(491, 202);
+            this.btnEnd.Location = new System.Drawing.Point(491, 196);
             this.btnEnd.Name = "btnEnd";
             this.btnEnd.Size = new System.Drawing.Size(139, 20);
             this.btnEnd.TabIndex = 23;
@@ -279,11 +283,50 @@
             this.btnEnd.UseVisualStyleBackColor = true;
             this.btnEnd.Click += new System.EventHandler(this.BtnEnd_Click);
             // 
+            // lblAlertas
+            // 
+            this.lblAlertas.AutoSize = true;
+            this.lblAlertas.Location = new System.Drawing.Point(18, 108);
+            this.lblAlertas.Name = "lblAlertas";
+            this.lblAlertas.Size = new System.Drawing.Size(39, 13);
+            this.lblAlertas.TabIndex = 24;
+            this.lblAlertas.Text = "Alertas";
+            // 
+            // lblThreading
+            // 
+            this.lblThreading.AutoSize = true;
+            this.lblThreading.Location = new System.Drawing.Point(488, 102);
+            this.lblThreading.Name = "lblThreading";
+            this.lblThreading.Size = new System.Drawing.Size(55, 13);
+            this.lblThreading.TabIndex = 25;
+            this.lblThreading.Text = "Threading";
+            // 
+            // lblExcelReading
+            // 
+            this.lblExcelReading.AutoSize = true;
+            this.lblExcelReading.Location = new System.Drawing.Point(343, 253);
+            this.lblExcelReading.Name = "lblExcelReading";
+            this.lblExcelReading.Size = new System.Drawing.Size(71, 13);
+            this.lblExcelReading.TabIndex = 26;
+            this.lblExcelReading.Text = "Excel reading";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(334, 223);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(296, 23);
+            this.progressBar1.TabIndex = 27;
+            this.progressBar1.Click += new System.EventHandler(this.ProgressBar1_Click);
+            // 
             // chromedriverSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 351);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.lblExcelReading);
+            this.Controls.Add(this.lblThreading);
+            this.Controls.Add(this.lblAlertas);
             this.Controls.Add(this.btnEnd);
             this.Controls.Add(this.btnShowData);
             this.Controls.Add(this.btnReadFile);
@@ -340,6 +383,10 @@
         private System.Windows.Forms.Button btnReadFile;
         private System.Windows.Forms.Button btnShowData;
         private System.Windows.Forms.Button btnEnd;
+        private System.Windows.Forms.Label lblAlertas;
+        private System.Windows.Forms.Label lblThreading;
+        private System.Windows.Forms.Label lblExcelReading;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

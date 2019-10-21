@@ -25,15 +25,12 @@ namespace Forms
     {
         static AppDataFile<string> appDataFile;
         public delegate void DelegadoLabel(string texto);
-        public event DelegadoLabel progressLabel;
-
 
 
         static AppDataFile<ExcelParameters> binaryFile;
         sugusParametersForm sugusParameters;
         protected ExcelParameters excelParameters;
         MyScheduling myScheduling;
-        int numero = 89;
         Thread bot;
 
         public chromedriverSelector()
@@ -195,7 +192,8 @@ namespace Forms
             myScheduling.CambioElemento += CambiarLabel;
             if(!MyScheduling.QueueCreated)
                 MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName);
-
+            this.progressBar1.Value = 0;
+            this.progressBar1.Maximum = MyScheduling.Elementos.Count;
             bot = new Thread(myScheduling.DoStuff);
             bot.Start();
         }
@@ -291,6 +289,7 @@ namespace Forms
                 this.lblProgress.BeginInvoke((MethodInvoker)delegate ()
                 {
                     this.lblProgress.Text = texto;
+                    this.progressBar1.Value++;
                 }
                 );
             }
@@ -323,10 +322,14 @@ namespace Forms
         {
             if (!MyScheduling.QueueCreated)
                 MessageBox.Show(MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName));
-            
-           
+            else
+                if(MessageBox.Show("Discard loaded data?","A file was already loaded", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    MessageBox.Show(MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName));
         }
 
-        
+        private void ProgressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
