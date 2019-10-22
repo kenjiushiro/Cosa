@@ -54,9 +54,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archivos\AppDataFile.cs" />
+    <Compile Include="Archivos\BinaryFile.cs" />
+    <Compile Include="Archivos\Excepciones\FileNotFoundException.cs" />
+    <Compile Include="Archivos\TxtFile.cs" />
+    <Compile Include="Archivos\XmlFile.cs" />
     <Compile Include="Chrome.cs" />
     <Compile Include="Excel.cs" />
     <Compile Include="ExcelParameters.cs" />
+    <Compile Include="Excepciones\WebsiteWasNotFoundException.cs" />
+    <Compile Include="Excepciones\WorkbookNotFound.cs" />
+    <Compile Include="Excepciones\WorksheetNotFound.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebScraper.cs" />
   </ItemGroup>
@@ -92,11 +100,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Excepciones\Excepciones.csproj">
-      <Project>{4DE82A59-3361-44FA-9E12-2B5914EC1091}</Project>
-      <Name>Excepciones</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -67,14 +67,16 @@
             this.lblBotname = new System.Windows.Forms.Label();
             this.btnCheckUpdates = new System.Windows.Forms.Button();
             this.lblState = new System.Windows.Forms.Label();
+            this.btnShowAlert = new System.Windows.Forms.Button();
             this.contextMenuValidar.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(346, 34);
+            this.btnSelect.Location = new System.Drawing.Point(462, 39);
+            this.btnSelect.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(139, 20);
+            this.btnSelect.Size = new System.Drawing.Size(185, 22);
             this.btnSelect.TabIndex = 0;
             this.btnSelect.Text = "Select folder";
             this.btnSelect.UseVisualStyleBackColor = true;
@@ -83,10 +85,11 @@
             // txtChromedriverPath
             // 
             this.txtChromedriverPath.ContextMenuStrip = this.contextMenuValidar;
-            this.txtChromedriverPath.Location = new System.Drawing.Point(12, 35);
+            this.txtChromedriverPath.Location = new System.Drawing.Point(16, 40);
+            this.txtChromedriverPath.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtChromedriverPath.Name = "txtChromedriverPath";
             this.txtChromedriverPath.ReadOnly = true;
-            this.txtChromedriverPath.Size = new System.Drawing.Size(324, 20);
+            this.txtChromedriverPath.Size = new System.Drawing.Size(430, 23);
             this.txtChromedriverPath.TabIndex = 1;
             this.txtChromedriverPath.TextChanged += new System.EventHandler(this.TxtValor_TextChanged);
             // 
@@ -108,9 +111,9 @@
             // lblInstrucciones
             // 
             this.lblInstrucciones.AutoSize = true;
-            this.lblInstrucciones.Location = new System.Drawing.Point(9, 9);
+            this.lblInstrucciones.Location = new System.Drawing.Point(11, 10);
             this.lblInstrucciones.Name = "lblInstrucciones";
-            this.lblInstrucciones.Size = new System.Drawing.Size(141, 13);
+            this.lblInstrucciones.Size = new System.Drawing.Size(186, 15);
             this.lblInstrucciones.TabIndex = 2;
             this.lblInstrucciones.Text = "Select chromedriver location";
             this.lblInstrucciones.Click += new System.EventHandler(this.LblInstrucciones_Click);
@@ -126,9 +129,10 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(11, 293);
+            this.btnGuardar.Location = new System.Drawing.Point(15, 338);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(139, 20);
+            this.btnGuardar.Size = new System.Drawing.Size(185, 22);
             this.btnGuardar.TabIndex = 3;
             this.btnGuardar.Text = "Save";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -136,9 +140,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(11, 319);
+            this.btnCancel.Location = new System.Drawing.Point(15, 368);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(139, 20);
+            this.btnCancel.Size = new System.Drawing.Size(185, 22);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -147,17 +152,19 @@
             // txtInputFile
             // 
             this.txtInputFile.ContextMenuStrip = this.contextMenuValidar;
-            this.txtInputFile.Location = new System.Drawing.Point(12, 61);
+            this.txtInputFile.Location = new System.Drawing.Point(16, 70);
+            this.txtInputFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtInputFile.Name = "txtInputFile";
             this.txtInputFile.ReadOnly = true;
-            this.txtInputFile.Size = new System.Drawing.Size(324, 20);
+            this.txtInputFile.Size = new System.Drawing.Size(430, 23);
             this.txtInputFile.TabIndex = 6;
             // 
             // btnSelectFile
             // 
-            this.btnSelectFile.Location = new System.Drawing.Point(346, 61);
+            this.btnSelectFile.Location = new System.Drawing.Point(462, 70);
+            this.btnSelectFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelectFile.Name = "btnSelectFile";
-            this.btnSelectFile.Size = new System.Drawing.Size(139, 20);
+            this.btnSelectFile.Size = new System.Drawing.Size(185, 22);
             this.btnSelectFile.TabIndex = 7;
             this.btnSelectFile.Text = "Select file";
             this.btnSelectFile.UseVisualStyleBackColor = true;
@@ -165,9 +172,10 @@
             // 
             // btnFileParameters
             // 
-            this.btnFileParameters.Location = new System.Drawing.Point(491, 61);
+            this.btnFileParameters.Location = new System.Drawing.Point(655, 70);
+            this.btnFileParameters.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnFileParameters.Name = "btnFileParameters";
-            this.btnFileParameters.Size = new System.Drawing.Size(139, 20);
+            this.btnFileParameters.Size = new System.Drawing.Size(185, 22);
             this.btnFileParameters.TabIndex = 8;
             this.btnFileParameters.Text = "File Parameters";
             this.btnFileParameters.UseVisualStyleBackColor = true;
@@ -175,9 +183,10 @@
             // 
             // btnDriverVersion
             // 
-            this.btnDriverVersion.Location = new System.Drawing.Point(491, 35);
+            this.btnDriverVersion.Location = new System.Drawing.Point(655, 40);
+            this.btnDriverVersion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDriverVersion.Name = "btnDriverVersion";
-            this.btnDriverVersion.Size = new System.Drawing.Size(139, 20);
+            this.btnDriverVersion.Size = new System.Drawing.Size(185, 22);
             this.btnDriverVersion.TabIndex = 9;
             this.btnDriverVersion.Text = "Version";
             this.btnDriverVersion.UseVisualStyleBackColor = true;
@@ -185,9 +194,10 @@
             // 
             // btnRunBot
             // 
-            this.btnRunBot.Location = new System.Drawing.Point(343, 319);
+            this.btnRunBot.Location = new System.Drawing.Point(457, 368);
+            this.btnRunBot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRunBot.Name = "btnRunBot";
-            this.btnRunBot.Size = new System.Drawing.Size(139, 20);
+            this.btnRunBot.Size = new System.Drawing.Size(185, 22);
             this.btnRunBot.TabIndex = 11;
             this.btnRunBot.Text = "Run bot";
             this.btnRunBot.UseVisualStyleBackColor = true;
@@ -195,9 +205,10 @@
             // 
             // btnThreadState
             // 
-            this.btnThreadState.Location = new System.Drawing.Point(491, 170);
+            this.btnThreadState.Location = new System.Drawing.Point(655, 196);
+            this.btnThreadState.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnThreadState.Name = "btnThreadState";
-            this.btnThreadState.Size = new System.Drawing.Size(139, 20);
+            this.btnThreadState.Size = new System.Drawing.Size(185, 22);
             this.btnThreadState.TabIndex = 12;
             this.btnThreadState.Text = "Thread state";
             this.btnThreadState.UseVisualStyleBackColor = true;
@@ -205,9 +216,10 @@
             // 
             // btnPause
             // 
-            this.btnPause.Location = new System.Drawing.Point(491, 118);
+            this.btnPause.Location = new System.Drawing.Point(655, 136);
+            this.btnPause.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(139, 20);
+            this.btnPause.Size = new System.Drawing.Size(185, 22);
             this.btnPause.TabIndex = 13;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = true;
@@ -215,9 +227,10 @@
             // 
             // btnResume
             // 
-            this.btnResume.Location = new System.Drawing.Point(491, 144);
+            this.btnResume.Location = new System.Drawing.Point(655, 166);
+            this.btnResume.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnResume.Name = "btnResume";
-            this.btnResume.Size = new System.Drawing.Size(139, 20);
+            this.btnResume.Size = new System.Drawing.Size(185, 22);
             this.btnResume.TabIndex = 14;
             this.btnResume.Text = "Resume";
             this.btnResume.UseVisualStyleBackColor = true;
@@ -225,9 +238,10 @@
             // 
             // btnBmf
             // 
-            this.btnBmf.Location = new System.Drawing.Point(491, 319);
+            this.btnBmf.Location = new System.Drawing.Point(655, 368);
+            this.btnBmf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBmf.Name = "btnBmf";
-            this.btnBmf.Size = new System.Drawing.Size(139, 20);
+            this.btnBmf.Size = new System.Drawing.Size(185, 22);
             this.btnBmf.TabIndex = 15;
             this.btnBmf.Text = "BMF";
             this.btnBmf.UseVisualStyleBackColor = true;
@@ -235,9 +249,10 @@
             // 
             // btnAlertAccept
             // 
-            this.btnAlertAccept.Location = new System.Drawing.Point(12, 124);
+            this.btnAlertAccept.Location = new System.Drawing.Point(16, 142);
+            this.btnAlertAccept.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAlertAccept.Name = "btnAlertAccept";
-            this.btnAlertAccept.Size = new System.Drawing.Size(139, 20);
+            this.btnAlertAccept.Size = new System.Drawing.Size(185, 22);
             this.btnAlertAccept.TabIndex = 16;
             this.btnAlertAccept.Text = "Accept alert";
             this.btnAlertAccept.UseVisualStyleBackColor = true;
@@ -245,9 +260,10 @@
             // 
             // btnAlertDismiss
             // 
-            this.btnAlertDismiss.Location = new System.Drawing.Point(12, 150);
+            this.btnAlertDismiss.Location = new System.Drawing.Point(16, 172);
+            this.btnAlertDismiss.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAlertDismiss.Name = "btnAlertDismiss";
-            this.btnAlertDismiss.Size = new System.Drawing.Size(139, 20);
+            this.btnAlertDismiss.Size = new System.Drawing.Size(185, 22);
             this.btnAlertDismiss.TabIndex = 17;
             this.btnAlertDismiss.Text = "Dismiss alert";
             this.btnAlertDismiss.UseVisualStyleBackColor = true;
@@ -255,9 +271,10 @@
             // 
             // btnAlertRead
             // 
-            this.btnAlertRead.Location = new System.Drawing.Point(12, 176);
+            this.btnAlertRead.Location = new System.Drawing.Point(16, 202);
+            this.btnAlertRead.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAlertRead.Name = "btnAlertRead";
-            this.btnAlertRead.Size = new System.Drawing.Size(139, 20);
+            this.btnAlertRead.Size = new System.Drawing.Size(185, 22);
             this.btnAlertRead.TabIndex = 18;
             this.btnAlertRead.Text = "Leer";
             this.btnAlertRead.UseVisualStyleBackColor = true;
@@ -265,9 +282,10 @@
             // 
             // btnPeek
             // 
-            this.btnPeek.Location = new System.Drawing.Point(334, 196);
+            this.btnPeek.Location = new System.Drawing.Point(446, 226);
+            this.btnPeek.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPeek.Name = "btnPeek";
-            this.btnPeek.Size = new System.Drawing.Size(139, 20);
+            this.btnPeek.Size = new System.Drawing.Size(185, 22);
             this.btnPeek.TabIndex = 19;
             this.btnPeek.Text = "Peek";
             this.btnPeek.UseVisualStyleBackColor = true;
@@ -276,17 +294,18 @@
             // lblProgress
             // 
             this.lblProgress.AutoSize = true;
-            this.lblProgress.Location = new System.Drawing.Point(331, 118);
+            this.lblProgress.Location = new System.Drawing.Point(441, 136);
             this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(89, 13);
+            this.lblProgress.Size = new System.Drawing.Size(121, 15);
             this.lblProgress.TabIndex = 20;
             this.lblProgress.Text = "Current work item";
             // 
             // btnReadFile
             // 
-            this.btnReadFile.Location = new System.Drawing.Point(343, 269);
+            this.btnReadFile.Location = new System.Drawing.Point(457, 310);
+            this.btnReadFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnReadFile.Name = "btnReadFile";
-            this.btnReadFile.Size = new System.Drawing.Size(139, 20);
+            this.btnReadFile.Size = new System.Drawing.Size(185, 22);
             this.btnReadFile.TabIndex = 21;
             this.btnReadFile.Text = "Read File";
             this.btnReadFile.UseVisualStyleBackColor = true;
@@ -294,9 +313,10 @@
             // 
             // btnShowData
             // 
-            this.btnShowData.Location = new System.Drawing.Point(491, 269);
+            this.btnShowData.Location = new System.Drawing.Point(655, 310);
+            this.btnShowData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnShowData.Name = "btnShowData";
-            this.btnShowData.Size = new System.Drawing.Size(139, 20);
+            this.btnShowData.Size = new System.Drawing.Size(185, 22);
             this.btnShowData.TabIndex = 22;
             this.btnShowData.Text = "Show data";
             this.btnShowData.UseVisualStyleBackColor = true;
@@ -304,9 +324,10 @@
             // 
             // btnEnd
             // 
-            this.btnEnd.Location = new System.Drawing.Point(491, 196);
+            this.btnEnd.Location = new System.Drawing.Point(655, 226);
+            this.btnEnd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEnd.Name = "btnEnd";
-            this.btnEnd.Size = new System.Drawing.Size(139, 20);
+            this.btnEnd.Size = new System.Drawing.Size(185, 22);
             this.btnEnd.TabIndex = 23;
             this.btnEnd.Text = "End";
             this.btnEnd.UseVisualStyleBackColor = true;
@@ -315,44 +336,46 @@
             // lblAlertas
             // 
             this.lblAlertas.AutoSize = true;
-            this.lblAlertas.Location = new System.Drawing.Point(12, 102);
+            this.lblAlertas.Location = new System.Drawing.Point(16, 118);
             this.lblAlertas.Name = "lblAlertas";
-            this.lblAlertas.Size = new System.Drawing.Size(39, 13);
+            this.lblAlertas.Size = new System.Drawing.Size(51, 15);
             this.lblAlertas.TabIndex = 24;
             this.lblAlertas.Text = "Alertas";
             // 
             // lblThreading
             // 
             this.lblThreading.AutoSize = true;
-            this.lblThreading.Location = new System.Drawing.Point(488, 102);
+            this.lblThreading.Location = new System.Drawing.Point(650, 118);
             this.lblThreading.Name = "lblThreading";
-            this.lblThreading.Size = new System.Drawing.Size(55, 13);
+            this.lblThreading.Size = new System.Drawing.Size(70, 15);
             this.lblThreading.TabIndex = 25;
             this.lblThreading.Text = "Threading";
             // 
             // lblExcelReading
             // 
             this.lblExcelReading.AutoSize = true;
-            this.lblExcelReading.Location = new System.Drawing.Point(343, 253);
+            this.lblExcelReading.Location = new System.Drawing.Point(457, 292);
             this.lblExcelReading.Name = "lblExcelReading";
-            this.lblExcelReading.Size = new System.Drawing.Size(71, 13);
+            this.lblExcelReading.Size = new System.Drawing.Size(91, 15);
             this.lblExcelReading.TabIndex = 26;
             this.lblExcelReading.Text = "Excel reading";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(334, 223);
+            this.progressBar1.Location = new System.Drawing.Point(446, 258);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(296, 23);
+            this.progressBar1.Size = new System.Drawing.Size(394, 26);
             this.progressBar1.TabIndex = 27;
             this.progressBar1.Click += new System.EventHandler(this.ProgressBar1_Click);
             // 
             // radioUser
             // 
             this.radioUser.AutoSize = true;
-            this.radioUser.Location = new System.Drawing.Point(251, 296);
+            this.radioUser.Location = new System.Drawing.Point(335, 341);
+            this.radioUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioUser.Name = "radioUser";
-            this.radioUser.Size = new System.Drawing.Size(85, 17);
+            this.radioUser.Size = new System.Drawing.Size(105, 19);
             this.radioUser.TabIndex = 29;
             this.radioUser.TabStop = true;
             this.radioUser.Text = "User session";
@@ -361,9 +384,10 @@
             // radioNew
             // 
             this.radioNew.AutoSize = true;
-            this.radioNew.Location = new System.Drawing.Point(251, 319);
+            this.radioNew.Location = new System.Drawing.Point(335, 368);
+            this.radioNew.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioNew.Name = "radioNew";
-            this.radioNew.Size = new System.Drawing.Size(85, 17);
+            this.radioNew.Size = new System.Drawing.Size(104, 19);
             this.radioNew.TabIndex = 30;
             this.radioNew.TabStop = true;
             this.radioNew.Text = "New session";
@@ -371,9 +395,10 @@
             // 
             // btnKillTaskChromedriver
             // 
-            this.btnKillTaskChromedriver.Location = new System.Drawing.Point(12, 220);
+            this.btnKillTaskChromedriver.Location = new System.Drawing.Point(16, 275);
+            this.btnKillTaskChromedriver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnKillTaskChromedriver.Name = "btnKillTaskChromedriver";
-            this.btnKillTaskChromedriver.Size = new System.Drawing.Size(139, 20);
+            this.btnKillTaskChromedriver.Size = new System.Drawing.Size(185, 22);
             this.btnKillTaskChromedriver.TabIndex = 31;
             this.btnKillTaskChromedriver.Text = "Kill Chromedriver";
             this.btnKillTaskChromedriver.UseVisualStyleBackColor = true;
@@ -381,9 +406,10 @@
             // 
             // btnKillTaskChrome
             // 
-            this.btnKillTaskChrome.Location = new System.Drawing.Point(12, 246);
+            this.btnKillTaskChrome.Location = new System.Drawing.Point(16, 305);
+            this.btnKillTaskChrome.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnKillTaskChrome.Name = "btnKillTaskChrome";
-            this.btnKillTaskChrome.Size = new System.Drawing.Size(139, 20);
+            this.btnKillTaskChrome.Size = new System.Drawing.Size(185, 22);
             this.btnKillTaskChrome.TabIndex = 32;
             this.btnKillTaskChrome.Text = "Kill chrome";
             this.btnKillTaskChrome.UseVisualStyleBackColor = true;
@@ -391,25 +417,27 @@
             // 
             // txtBotName
             // 
-            this.txtBotName.Location = new System.Drawing.Point(181, 134);
+            this.txtBotName.Location = new System.Drawing.Point(241, 155);
+            this.txtBotName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBotName.Name = "txtBotName";
-            this.txtBotName.Size = new System.Drawing.Size(100, 20);
+            this.txtBotName.Size = new System.Drawing.Size(132, 23);
             this.txtBotName.TabIndex = 33;
             // 
             // lblBotname
             // 
             this.lblBotname.AutoSize = true;
-            this.lblBotname.Location = new System.Drawing.Point(178, 118);
+            this.lblBotname.Location = new System.Drawing.Point(238, 136);
             this.lblBotname.Name = "lblBotname";
-            this.lblBotname.Size = new System.Drawing.Size(52, 13);
+            this.lblBotname.Size = new System.Drawing.Size(65, 15);
             this.lblBotname.TabIndex = 34;
             this.lblBotname.Text = "Bot name";
             // 
             // btnCheckUpdates
             // 
-            this.btnCheckUpdates.Location = new System.Drawing.Point(181, 160);
+            this.btnCheckUpdates.Location = new System.Drawing.Point(241, 185);
+            this.btnCheckUpdates.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCheckUpdates.Name = "btnCheckUpdates";
-            this.btnCheckUpdates.Size = new System.Drawing.Size(139, 20);
+            this.btnCheckUpdates.Size = new System.Drawing.Size(195, 34);
             this.btnCheckUpdates.TabIndex = 35;
             this.btnCheckUpdates.Text = "Check for updates";
             this.btnCheckUpdates.UseVisualStyleBackColor = true;
@@ -418,17 +446,29 @@
             // lblState
             // 
             this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(12, 357);
+            this.lblState.Location = new System.Drawing.Point(16, 412);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(38, 13);
+            this.lblState.Size = new System.Drawing.Size(44, 15);
             this.lblState.TabIndex = 36;
             this.lblState.Text = "Ready";
             // 
+            // btnShowAlert
+            // 
+            this.btnShowAlert.Location = new System.Drawing.Point(19, 232);
+            this.btnShowAlert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnShowAlert.Name = "btnShowAlert";
+            this.btnShowAlert.Size = new System.Drawing.Size(185, 22);
+            this.btnShowAlert.TabIndex = 37;
+            this.btnShowAlert.Text = "Alerta";
+            this.btnShowAlert.UseVisualStyleBackColor = true;
+            this.btnShowAlert.Click += new System.EventHandler(this.BtnShowAlert_Click);
+            // 
             // chromedriverSelector
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 379);
+            this.ClientSize = new System.Drawing.Size(856, 458);
+            this.Controls.Add(this.btnShowAlert);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.btnCheckUpdates);
             this.Controls.Add(this.lblBotname);
@@ -463,6 +503,9 @@
             this.Controls.Add(this.lblInstrucciones);
             this.Controls.Add(this.txtChromedriverPath);
             this.Controls.Add(this.btnSelect);
+            this.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "chromedriverSelector";
             this.Text = "SUGUS Version 3.6.5";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -512,6 +555,7 @@
         private System.Windows.Forms.Label lblBotname;
         private System.Windows.Forms.Button btnCheckUpdates;
         private System.Windows.Forms.Label lblState;
+        private System.Windows.Forms.Button btnShowAlert;
     }
 }
 

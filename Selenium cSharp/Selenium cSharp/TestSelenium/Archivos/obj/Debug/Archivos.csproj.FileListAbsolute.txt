@@ -18,10 +18,7 @@ D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archi
 D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\bin\Debug\Archivos.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\bin\Debug\Archivos.pdb
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\bin\Debug\Excepciones.dll
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\bin\Debug\Excepciones.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.csprojAssemblyReference.cache
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.csproj.CoreCompileInputs.cache
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.csproj.CopyComplete
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Archivos\obj\Debug\Archivos.pdb

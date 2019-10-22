@@ -25,29 +25,34 @@ namespace Clases
             wb = excel.Workbooks.Open(path);
             sh = wb.Worksheets[sheet];
         }
+
         public Excel(string path, string sheet)
         {
             this.path = path;
-            try
+            if(!File.Exists(path))
+                throw new FileNotFoundException("The file " + path + " could not be found.");
+            else
             {
-                wb = excel.Workbooks.Open(path);
-            }
-            catch
-            {
-                throw new WorkbookNotFound("The workbook " + this.path + " could not be opened.");
-            }
 
-            try
-            {
-                sh = wb.Worksheets[sheet];
-            }
-            catch
-            {
-                throw new WorksheetNotFound("The worksheet " + sheet  + " could not be found");
-            }
-            finally
-            {
-                //wb.Close();
+                try
+                {
+                    wb = excel.Workbooks.Open(path);
+                }
+                catch(Exception e)
+                {
+                    Debug.Print(e.Message);
+                    throw new WorkbookNotFound("The workbook " + this.path + " could not be opened.");
+                }
+
+                try
+                {
+                    sh = wb.Worksheets[sheet];
+                }
+                catch
+                {
+                    this.Close();
+                    throw new WorksheetNotFound("The worksheet " + sheet  + " could not be found");
+                }
             }
 
         }

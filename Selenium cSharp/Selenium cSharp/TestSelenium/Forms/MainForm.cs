@@ -19,15 +19,19 @@ using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using SUGUS;
 using System.Net.Http;
+using System.Diagnostics;
 
 namespace Forms
 {
     public partial class chromedriverSelector : Form
     {
-        static AppDataFile<string> appDataFile;
+        //Files chromedriver y excel parameters
+        static AppDataFile<string> chromedriverFile;
+        static AppDataFile<ExcelParameters> excelParametersFile;
+
+
         public delegate void DelegadoLabel(string texto);
         string version;
-        static AppDataFile<ExcelParameters> binaryFile;
         sugusParametersForm sugusParameters;
         protected ExcelParameters excelParameters;
         MyScheduling myScheduling;
@@ -52,17 +56,17 @@ namespace Forms
             this.txtBotName.Text = "SUGUS";
             Icon icon = new Icon(Environment.CurrentDirectory + "\\robotIcon.ico");
             this.Icon = icon;
-            binaryFile = new BinaryFile<ExcelParameters>("SUGUS", "parameters.bin");
-            appDataFile = new TxtFile("SUGUS", "chromedriverPath.txt");
+            excelParametersFile = new BinaryFile<ExcelParameters>("SUGUS", "parameters.bin");
+            chromedriverFile = new TxtFile("SUGUS", "chromedriverPath.txt");
             radioNew.Checked = true;
             try
             {
-                txtChromedriverPath.Text = appDataFile.ReadFile();
-                excelParameters = binaryFile.ReadFile();
+                txtChromedriverPath.Text = chromedriverFile.ReadFile();
+                excelParameters = excelParametersFile.ReadFile();
             }
             catch(Exception ex)
             {
-                if (ex is SerializationException || ex is FileDoesNotExist)
+                if (ex is SerializationException || ex is FileNotFoundException)
                     excelParameters = new ExcelParameters("", "InputFile", 1);
                 else
                     throw ex;
@@ -103,10 +107,15 @@ namespace Forms
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            appDataFile.WriteFile(txtChromedriverPath.Text);
-            if(sugusParameters!=null)
+            GuardarArchivos();
+        }
+
+        public void GuardarArchivos()
+        {
+            chromedriverFile.WriteFile(txtChromedriverPath.Text);
+            if (sugusParameters != null)
                 this.excelParameters = sugusParameters.eParameters;
-            binaryFile.WriteFile(this.excelParameters);
+            excelParametersFile.WriteFile(this.excelParameters);
             MessageBox.Show("Settings saved!");
         }
 
@@ -122,10 +131,20 @@ namespace Forms
 
         private void BtnSelectFile_Click(object sender, EventArgs e)
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = "C:\\Users";
-            dialog.IsFolderPicker = false;
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            //CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            //dialog.InitialDirectory = "C:\\Users";
+            //dialog.IsFolderPicker = false;
+            //if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            //{
+            //    txtInputFile.Text = dialog.FileName;
+            //    this.excelParameters.Path = dialog.FileName;
+            //}
+
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Excel Files| *.xls; *.xlsx; *.xlsm";
+            dialog.InitialDirectory = "C:\\";
+            if(dialog.ShowDialog() == DialogResult.OK)
             {
                 txtInputFile.Text = dialog.FileName;
                 this.excelParameters.Path = dialog.FileName;
@@ -139,6 +158,7 @@ namespace Forms
                 sugusParameters = new sugusParametersForm(excelParameters);
             }
             sugusParameters.Show();
+            
         }
 
         private void BtnDriverVersion_Click(object sender, EventArgs e)
@@ -262,8 +282,11 @@ namespace Forms
 
         private void BtnBmf_Click(object sender, EventArgs e)
         {
-            myScheduling.ExecuteJavascriptFunction("alert('asdsadsadsa')");
-
+            Queue<RolDemanda> roles = MyScheduling.Elementos;
+            foreach(RolDemanda rol in roles)
+            {
+                Debug.Print(rol.ToString()); 
+            }
         }
 
         private void BtnAlertAccept_Click(object sender, EventArgs e)
@@ -310,9 +333,6 @@ namespace Forms
             else
                 MessageBox.Show("The bot is not running");
         }
-
-
-
 
         public void CambiarLabelItem(string texto)
         {
@@ -407,15 +427,13 @@ namespace Forms
             {
                 excel = new Excel(excelParameters.Path, excelParameters.SheetName);
             }
-            catch(Exception e )
+            catch(Exception ex )
             {
                 retorno = false;
-                if (e is WorkbookNotFound)
-                    mensaje.AppendLine("The workbook could not be found");
-                else if (e is WorksheetNotFound)
-                    mensaje.AppendLine("The worksheet " + excelParameters.SheetName + " could not be found");
+                if (ex is FileNotFoundException || ex is WorkbookNotFound || ex is WorksheetNotFound)
+                    mensaje.AppendLine(ex.Message);
                 else
-                    MessageBox.Show(e.Message);
+                    MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -445,21 +463,38 @@ namespace Forms
 
         private void BtnCheckUpdates_Click(object sender, EventArgs e)
         {
-            WebScraper ws = new WebScraper("http://localhost:8000");
-            string botVersion;
             try
             {
-                botVersion = ws.GetTextByID(this.txtBotName.Text).Trim();
-                if (botVersion == version)
-                    MessageBox.Show("The bot is up to date");
-                else
-                    MessageBox.Show("There is a new version available (" + botVersion + ")");
+                WebScraper ws = new WebScraper("http://localhost:8000");
+                //WebScraper ws = new WebScraper("http://www.gooasdsaasdgle.com");
+                string botVersion;
+                try
+                {
+                    botVersion = ws.GetTextByID(this.txtBotName.Text).Trim();
+                    if (botVersion == version)
+                        MessageBox.Show("The bot is up to date");
+                    else
+                        MessageBox.Show("There is a new version available (" + botVersion + ")");
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("The bot was not found");
+                }
             }
-            catch(Exception)
+            catch(WebsiteWasNotFoundException ex)
             {
-                MessageBox.Show("The bot was not found");
+                MessageBox.Show(ex.Message);
             }
-            
+        }
+
+        private void Button1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnShowAlert_Click(object sender, EventArgs e)
+        {
+            myScheduling.ExecuteJavascriptFunction("alert('asdsadsadsa')");
 
         }
     }

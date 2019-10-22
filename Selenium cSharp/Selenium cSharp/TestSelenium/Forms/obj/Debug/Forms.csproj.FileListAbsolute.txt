@@ -57,17 +57,13 @@ D:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.Fo
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Forms.exe.config
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Forms.exe
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Forms.pdb
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Archivos.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Clases.dll
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Excepciones.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Microsoft.WindowsAPICodePack.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\SUGUS.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\WebDriver.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Newtonsoft.Json.dll
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Archivos.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Clases.pdb
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Excepciones.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\SUGUS.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Microsoft.WindowsAPICodePack.xml
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml

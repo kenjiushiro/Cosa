@@ -109,17 +109,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Archivos\Archivos.csproj">
-      <Project>{FCF03202-B015-4EE2-896B-18A241E171CE}</Project>
-      <Name>Archivos</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Clases\SeleniumBotBase.csproj">
       <Project>{05EFD79E-77FC-4133-8D1F-65CD85DC402B}</Project>
       <Name>SeleniumBotBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Excepciones\Excepciones.csproj">
-      <Project>{4DE82A59-3361-44FA-9E12-2B5914EC1091}</Project>
-      <Name>Excepciones</Name>
     </ProjectReference>
     <ProjectReference Include="..\SUGUS\SUGUS.csproj">
       <Project>{D99E61AD-B008-494A-A9B6-95D663ED7730}</Project>

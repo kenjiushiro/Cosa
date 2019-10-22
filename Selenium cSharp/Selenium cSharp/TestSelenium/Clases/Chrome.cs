@@ -18,17 +18,24 @@ namespace Clases
     public class Chrome<T>
     {
         #region Atributos y constructores
+
         public delegate void Delegado(string aviso);
         public event Delegado CambioElemento;
         Thread openBrowser;
-        private string url;
 
+        //Queue de elementos a procesar
         protected static Queue<T> elementos;
+
+        //Variables del webdriver
+        private string url;
         private IWebDriver driver;
         ChromeOptions options;
         ICapabilities capabilities;
+
+        //True si hay que usar la sesion del usuario o false si es una nueva
         private bool recoverUserSession;
-        //IWebDriver eventDriver = new EventFiringWebDriver(IWebDriver driver);
+
+
         protected void EventoCambio(string textoAviso)
         {
             CambioElemento(textoAviso);
@@ -54,21 +61,17 @@ namespace Clases
             this.url = url;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="chromedriverDirectory">Location of the directory containing chromedriver.exe</param>
-        /// <param name="url">URL to Open</param>
-        /// <param name="userSession">True to use the current user chrome session, false to open a new one</param>
         public Chrome(string chromedriverDirectory, string url,bool userSession):this(chromedriverDirectory, userSession)
         {
             this.url = url;
             this.recoverUserSession = userSession;
         }
 
+        /// <summary>
+        /// Creates a new thread to open the website
+        /// </summary>
         public void StartDriver()
         {
-
             openBrowser = new Thread(this.OpenDriver);
             openBrowser.Start();
             //OpenDriver();
@@ -79,9 +82,9 @@ namespace Clases
             driver.Url = this.url;
 
         }
+
         private void SetOptions()
         {
-            //options.AddArgument(@"user-data-dir=C:\SeleniumProfiles\Default");
             if(this.recoverUserSession)
                 options.AddArgument(@"user-data-dir=C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Google\\Chrome\\User Data\\");
             options.LeaveBrowserRunning = true;
@@ -102,6 +105,10 @@ namespace Clases
         #endregion
 
         #region Propiedades
+
+        /// <summary>
+        /// Setea o recupera la Queue de elementos a procesar
+        /// </summary>
         public static Queue<T> Elementos
         {
             set
@@ -113,6 +120,10 @@ namespace Clases
                 return elementos;
             }
         }
+
+        /// <summary>
+        /// Retorna el proximo elemento en la queue sin sacarlo de la lista
+        /// </summary>
         public virtual T NextElement
         {
             get
@@ -121,6 +132,9 @@ namespace Clases
             }
         }
 
+        /// <summary>
+        /// Retorna true si la queue esta inicializada
+        /// </summary>
         public static bool QueueCreated
         {
             get
@@ -131,7 +145,9 @@ namespace Clases
             }
         }
 
-
+        /// <summary>
+        /// Retorna la version del chromedriver
+        /// </summary>
         public string DriverVersion
         {
             get
@@ -148,6 +164,10 @@ namespace Clases
             }
         }
 
+
+        /// <summary>
+        /// Retorna la version de Google Chrome
+        /// </summary>
         public string ChromeVersion
         {
             get
@@ -167,16 +187,19 @@ namespace Clases
             }
         } 
 
-        public string BrowserName
-        {
-            get
-            {
+        //public string BrowserName
+        //{
+        //    get
+        //    {
 
-                return options.BrowserName;
+        //        return options.BrowserName;
                 
-            }
-        }
+        //    }
+        //}
 
+        /// <summary>
+        /// Abre una pagina pasandole una URL
+        /// </summary>
         public string URL
         {
             set
@@ -184,6 +207,10 @@ namespace Clases
                 driver.Url = value;
             }
         }
+
+        /// <summary>
+        /// Retorna el webdriver
+        /// </summary>
         public IWebDriver Driver
         {
             get
@@ -192,20 +219,24 @@ namespace Clases
             }
         }
 
+        /// <summary>
+        /// Retorna el texto de una alerta
+        /// </summary>
         public string Alerta
         {
             get
             {
                 IAlert a = driver.SwitchTo().Alert();
                 return a.Text;
-
             }
         }
 
         #endregion
 
         #region Metodos
-        
+        /// <summary>
+        /// Cierra el chromedriver y libera el espacio en memoria
+        /// </summary>
         public void Close()
         {
             //driver.Close();
@@ -213,7 +244,9 @@ namespace Clases
             driver.Dispose();
         }
 
-
+        /// <summary>
+        /// Acepta la alerta de javascript
+        /// </summary>
         public void AcceptAlert()
         {
             IAlert a;
@@ -221,12 +254,20 @@ namespace Clases
             a.Accept();
         }
 
+
+        /// <summary>
+        /// Cierra la alerta de javascript
+        /// </summary>
         public void DismissAlert()
         {
             IAlert a = this.driver.SwitchTo().Alert();
             a.Dismiss();
         }
 
+        /// <summary>
+        /// Ejecuta una funcion en javascript
+        /// </summary>
+        /// <param name="jsFunction"></param>
         public void ExecuteJavascriptFunction(string jsFunction)
         {
             IJavaScriptExecutor javaScript = (IJavaScriptExecutor)this.Driver;

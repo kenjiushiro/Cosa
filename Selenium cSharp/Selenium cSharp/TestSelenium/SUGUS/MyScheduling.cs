@@ -20,18 +20,22 @@ namespace SUGUS
 
         public MyScheduling(string chromedriverPath) : base(chromedriverPath)
         {   
+
         }
 
         public MyScheduling(string chromedriverPath, bool userSession) : base(chromedriverPath, userSession)
         {
+
         }
 
         public MyScheduling(string chromedriverPath, string url) : base(chromedriverPath, url)
         {
+
         }
 
         public MyScheduling(string chromedriverPath, string url,bool userSession) : base(chromedriverPath, url,userSession)
         {
+
         }
         #endregion
 

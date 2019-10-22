@@ -31,10 +31,8 @@ C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\SUGUS.dl
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\SUGUS.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Clases.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\WebDriver.dll
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Excepciones.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Clases.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\WebDriver.xml
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Excepciones.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.csprojAssemblyReference.cache
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.csproj.CoreCompileInputs.cache
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.csproj.CopyComplete
