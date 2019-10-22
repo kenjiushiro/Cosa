@@ -1,0 +1,18 @@
+Cambiar label form en thread
+	public void CambiarLabelItem(string texto)
+	{
+		if (this.lblProgress.InvokeRequired)
+		{
+			this.lblProgress.BeginInvoke((MethodInvoker)delegate ()
+			{
+				this.lblProgress.Text = texto;
+				this.progressBar1.Value++;
+			}
+			);
+		}
+		else
+		{
+			this.lblProgress.Text = texto;
+		}
+	}
+=========================================================================================================================

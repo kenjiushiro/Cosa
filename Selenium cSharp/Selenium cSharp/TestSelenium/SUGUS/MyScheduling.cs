@@ -9,6 +9,7 @@ using OpenQA.Selenium.Chrome;
 using System.Threading;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace SUGUS
 {
@@ -43,6 +44,7 @@ namespace SUGUS
         #region Metodos
         public static string LeerData(string inputFilePath,string sheetName)
         {
+
             Excel excel = new Excel(inputFilePath, sheetName);
             try
             {
@@ -79,16 +81,20 @@ namespace SUGUS
         public void DoStuff()
         {
             RolDemanda rol;
-            foreach(var elemento in Elementos.ToList())
+            foreach (var elemento in Elementos.ToList())
             {
                 Thread.Sleep(1000);
                 rol = Elementos.Dequeue();
+                Debug.Print("ID: " + rol.ID + " Cliente: " + rol.Cliente + " Specialty: " + rol.Specialty);
                 this.Driver.FindElement(By.Name("q")).Clear();
                 base.EventoCambio(rol.ToString());
-                
-                //delegado(i + "");
                 this.Driver.FindElement(By.Name("q")).SendKeys(rol.ID + "");
             }
+        }
+
+        private void LostFocus()
+        {
+            Debug.Print("LOSTFOCUSLOSTFOCUSLOSTFOCUSLOSTFOCUSLOSTFOCUSLOSTFOCUSLOSTFOCUS");
         }
 
         #endregion

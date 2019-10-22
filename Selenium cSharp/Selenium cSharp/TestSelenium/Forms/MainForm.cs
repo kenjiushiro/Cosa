@@ -18,6 +18,7 @@ using Excepciones;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using SUGUS;
+using System.Net.Http;
 
 namespace Forms
 {
@@ -25,8 +26,7 @@ namespace Forms
     {
         static AppDataFile<string> appDataFile;
         public delegate void DelegadoLabel(string texto);
-
-
+        string version;
         static AppDataFile<ExcelParameters> binaryFile;
         sugusParametersForm sugusParameters;
         protected ExcelParameters excelParameters;
@@ -48,6 +48,8 @@ namespace Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            version = "3.6.5";
+            this.txtBotName.Text = "SUGUS";
             Icon icon = new Icon(Environment.CurrentDirectory + "\\robotIcon.ico");
             this.Icon = icon;
             binaryFile = new BinaryFile<ExcelParameters>("SUGUS", "parameters.bin");
@@ -137,7 +139,6 @@ namespace Forms
                 sugusParameters = new sugusParametersForm(excelParameters);
             }
             sugusParameters.Show();
-
         }
 
         private void BtnDriverVersion_Click(object sender, EventArgs e)
@@ -179,13 +180,20 @@ namespace Forms
             {
                 bot.Abort();
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                bot.Resume();
+                if (!(ex is System.NullReferenceException))
+                {
+                    bot.Resume();
+                    
+                }
+                else
+                    MessageBox.Show("The bot is not running");
             }
             finally
             {
                 myScheduling.Close();
+                this.progressBar1.Value = 0;
             }
         }
 
@@ -199,7 +207,8 @@ namespace Forms
                     myScheduling = new MyScheduling(txtChromedriverPath.Text, "https://www.google.com",false);
                 else
                     myScheduling = new MyScheduling(txtChromedriverPath.Text, "https://www.google.com");
-                myScheduling.CambioElemento += CambiarLabel;
+                myScheduling.StartDriver();
+                myScheduling.CambioElemento += CambiarLabelItem;
                 if(!MyScheduling.QueueCreated)
                     MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName);
                 this.progressBar1.Value = 0;
@@ -219,7 +228,17 @@ namespace Forms
 
         private void BtnResume_Click(object sender, EventArgs e)
         {
-            bot.Resume();
+            if (bot != null && bot.IsAlive)
+                try
+                {
+                    bot.Resume();
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("The bot is already running");
+                }
+            else
+                MessageBox.Show("The bot is not running");
         }
 
         private void BtnPause_Click(object sender, EventArgs e)
@@ -243,7 +262,8 @@ namespace Forms
 
         private void BtnBmf_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Environment.CurrentDirectory);
+            myScheduling.ExecuteJavascriptFunction("alert('asdsadsadsa')");
+
         }
 
         private void BtnAlertAccept_Click(object sender, EventArgs e)
@@ -294,7 +314,7 @@ namespace Forms
 
 
 
-        public void CambiarLabel(string texto)
+        public void CambiarLabelItem(string texto)
         {
             if (this.lblProgress.InvokeRequired)
             {
@@ -308,6 +328,22 @@ namespace Forms
             else
             {
                 this.lblProgress.Text = texto;
+            }
+        }
+
+        public void CambiarLabelState(string texto)
+        {
+            if (this.lblState.InvokeRequired)
+            {
+                this.lblState.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    this.lblState.Text = texto;
+                }
+                );
+            }
+            else
+            {
+                this.lblState.Text = texto;
             }
         }
 
@@ -326,17 +362,23 @@ namespace Forms
                 formElementos.AddHeader("Cliente");
                 formElementos.AddHeader("Specialty");
                 formElementos.Show();
-
             }
         }
 
         private void BtnReadFile_Click(object sender, EventArgs e)
         {
             if (!MyScheduling.QueueCreated)
+            {
+                CambiarLabelState("Reading excel");
                 MessageBox.Show(MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName));
+            }
             else
                 if(MessageBox.Show("Discard loaded data?","A file was already loaded", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CambiarLabelState("Reading excel");
                     MessageBox.Show(MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName));
+                }
+            CambiarLabelState("Ready");
         }
 
         private void ProgressBar1_Click(object sender, EventArgs e)
@@ -389,6 +431,36 @@ namespace Forms
                 MessageBox.Show(mensaje.ToString());
                 
             return retorno;
+        }
+
+        private void BtnKillTaskChrome_Click(object sender, EventArgs e)
+        {
+            MyScheduling.KillTask("chrome");
+        }
+
+        private void BtnKillTaskChromedriver_Click(object sender, EventArgs e)
+        {
+            MyScheduling.KillTask("chromedriver");
+        }
+
+        private void BtnCheckUpdates_Click(object sender, EventArgs e)
+        {
+            WebScraper ws = new WebScraper("http://localhost:8000");
+            string botVersion;
+            try
+            {
+                botVersion = ws.GetTextByID(this.txtBotName.Text).Trim();
+                if (botVersion == version)
+                    MessageBox.Show("The bot is up to date");
+                else
+                    MessageBox.Show("There is a new version available (" + botVersion + ")");
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("The bot was not found");
+            }
+            
+
         }
     }
 }

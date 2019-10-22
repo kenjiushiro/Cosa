@@ -1,29 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using IronWebScraper;
+using HtmlAgilityPack;
 
 namespace Clases
 {
-    class WebScraper
+    public class WebScraper
     {
-        WebScraper scraper;
+        string url;
+        HttpClient cliente;
+        Task<string> html;
+        public WebScraper(string url)
+        {
+            this.url = url;
+            cliente = new HttpClient();
+        }
+
+        public string Html
+        {
+            get
+            {
+                html = cliente.GetStringAsync(url);
+                return html.Result;
+            }
+        }
+
+        public string GetTextByID(string id)
+        {
+            var html = cliente.GetStringAsync(url);
+            HtmlDocument documento = new HtmlDocument();
+            documento.LoadHtml(html.Result);
+            string botVersion;
+
+          
+            return documento.GetElementbyId(id).InnerText;
+          
+
+            
+
+        }
         
-        public WebScraper()
-        {
-            scraper = new WebScraper();
-        }
-
-        public string paginaWeb(string url)
-        {
-            ScrapedData data = new ScrapedData();
-            Request request = new Request();
-            request.Url = url;
-            return "asd";
-        }
-
-
     }
 }

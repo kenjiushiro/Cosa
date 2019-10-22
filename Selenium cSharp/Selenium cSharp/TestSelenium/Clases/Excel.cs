@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Excepciones;
@@ -45,7 +47,7 @@ namespace Clases
             }
             finally
             {
-                wb.Close();
+                //wb.Close();
             }
 
         }
@@ -57,7 +59,7 @@ namespace Clases
 
             foreach(Worksheet ws in wb.Worksheets)
             {
-                Console.WriteLine(ws.Name);
+                Debug.WriteLine(ws.Name);
                 if (ws.Name == sheetName)
                 {
                     retorno = ws.Index;
@@ -75,7 +77,19 @@ namespace Clases
         {
             try
             {
+                Marshal.ReleaseComObject(sh);
+                //WRITE close and release
                 wb.Close();
+                Marshal.ReleaseComObject(wb);
+                //!WRITE quit and release
+                excel.Quit();
+                Marshal.ReleaseComObject(excel);
+                //cleanup
+                Debug.Print("Empezo collect");
+                GC.Collect();
+                Debug.Print("Termino Collect");
+                GC.WaitForPendingFinalizers();
+                Debug.Print("Termino pending finalizers");
             }
             catch(Exception)
             {

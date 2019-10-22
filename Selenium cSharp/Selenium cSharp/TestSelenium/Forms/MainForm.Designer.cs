@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.btnSelect = new System.Windows.Forms.Button();
             this.txtChromedriverPath = new System.Windows.Forms.TextBox();
+            this.contextMenuValidar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.validateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInstrucciones = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -57,10 +59,14 @@
             this.lblThreading = new System.Windows.Forms.Label();
             this.lblExcelReading = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.contextMenuValidar = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.validateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.radioUser = new System.Windows.Forms.RadioButton();
             this.radioNew = new System.Windows.Forms.RadioButton();
+            this.btnKillTaskChromedriver = new System.Windows.Forms.Button();
+            this.btnKillTaskChrome = new System.Windows.Forms.Button();
+            this.txtBotName = new System.Windows.Forms.TextBox();
+            this.lblBotname = new System.Windows.Forms.Label();
+            this.btnCheckUpdates = new System.Windows.Forms.Button();
+            this.lblState = new System.Windows.Forms.Label();
             this.contextMenuValidar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +89,21 @@
             this.txtChromedriverPath.Size = new System.Drawing.Size(324, 20);
             this.txtChromedriverPath.TabIndex = 1;
             this.txtChromedriverPath.TextChanged += new System.EventHandler(this.TxtValor_TextChanged);
+            // 
+            // contextMenuValidar
+            // 
+            this.contextMenuValidar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.validateToolStripMenuItem});
+            this.contextMenuValidar.Name = "contextMenuValidar";
+            this.contextMenuValidar.Size = new System.Drawing.Size(116, 26);
+            this.contextMenuValidar.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuValidar_Opening);
+            // 
+            // validateToolStripMenuItem
+            // 
+            this.validateToolStripMenuItem.Name = "validateToolStripMenuItem";
+            this.validateToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.validateToolStripMenuItem.Text = "Validate";
+            this.validateToolStripMenuItem.Click += new System.EventHandler(this.ValidateToolStripMenuItem_Click);
             // 
             // lblInstrucciones
             // 
@@ -214,7 +235,7 @@
             // 
             // btnAlertAccept
             // 
-            this.btnAlertAccept.Location = new System.Drawing.Point(21, 124);
+            this.btnAlertAccept.Location = new System.Drawing.Point(12, 124);
             this.btnAlertAccept.Name = "btnAlertAccept";
             this.btnAlertAccept.Size = new System.Drawing.Size(139, 20);
             this.btnAlertAccept.TabIndex = 16;
@@ -224,7 +245,7 @@
             // 
             // btnAlertDismiss
             // 
-            this.btnAlertDismiss.Location = new System.Drawing.Point(21, 150);
+            this.btnAlertDismiss.Location = new System.Drawing.Point(12, 150);
             this.btnAlertDismiss.Name = "btnAlertDismiss";
             this.btnAlertDismiss.Size = new System.Drawing.Size(139, 20);
             this.btnAlertDismiss.TabIndex = 17;
@@ -234,7 +255,7 @@
             // 
             // btnAlertRead
             // 
-            this.btnAlertRead.Location = new System.Drawing.Point(21, 176);
+            this.btnAlertRead.Location = new System.Drawing.Point(12, 176);
             this.btnAlertRead.Name = "btnAlertRead";
             this.btnAlertRead.Size = new System.Drawing.Size(139, 20);
             this.btnAlertRead.TabIndex = 18;
@@ -294,7 +315,7 @@
             // lblAlertas
             // 
             this.lblAlertas.AutoSize = true;
-            this.lblAlertas.Location = new System.Drawing.Point(18, 108);
+            this.lblAlertas.Location = new System.Drawing.Point(12, 102);
             this.lblAlertas.Name = "lblAlertas";
             this.lblAlertas.Size = new System.Drawing.Size(39, 13);
             this.lblAlertas.TabIndex = 24;
@@ -326,21 +347,6 @@
             this.progressBar1.TabIndex = 27;
             this.progressBar1.Click += new System.EventHandler(this.ProgressBar1_Click);
             // 
-            // contextMenuValidar
-            // 
-            this.contextMenuValidar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.validateToolStripMenuItem});
-            this.contextMenuValidar.Name = "contextMenuValidar";
-            this.contextMenuValidar.Size = new System.Drawing.Size(116, 26);
-            this.contextMenuValidar.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuValidar_Opening);
-            // 
-            // validateToolStripMenuItem
-            // 
-            this.validateToolStripMenuItem.Name = "validateToolStripMenuItem";
-            this.validateToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.validateToolStripMenuItem.Text = "Validate";
-            this.validateToolStripMenuItem.Click += new System.EventHandler(this.ValidateToolStripMenuItem_Click);
-            // 
             // radioUser
             // 
             this.radioUser.AutoSize = true;
@@ -363,11 +369,72 @@
             this.radioNew.Text = "New session";
             this.radioNew.UseVisualStyleBackColor = true;
             // 
+            // btnKillTaskChromedriver
+            // 
+            this.btnKillTaskChromedriver.Location = new System.Drawing.Point(12, 220);
+            this.btnKillTaskChromedriver.Name = "btnKillTaskChromedriver";
+            this.btnKillTaskChromedriver.Size = new System.Drawing.Size(139, 20);
+            this.btnKillTaskChromedriver.TabIndex = 31;
+            this.btnKillTaskChromedriver.Text = "Kill Chromedriver";
+            this.btnKillTaskChromedriver.UseVisualStyleBackColor = true;
+            this.btnKillTaskChromedriver.Click += new System.EventHandler(this.BtnKillTaskChromedriver_Click);
+            // 
+            // btnKillTaskChrome
+            // 
+            this.btnKillTaskChrome.Location = new System.Drawing.Point(12, 246);
+            this.btnKillTaskChrome.Name = "btnKillTaskChrome";
+            this.btnKillTaskChrome.Size = new System.Drawing.Size(139, 20);
+            this.btnKillTaskChrome.TabIndex = 32;
+            this.btnKillTaskChrome.Text = "Kill chrome";
+            this.btnKillTaskChrome.UseVisualStyleBackColor = true;
+            this.btnKillTaskChrome.Click += new System.EventHandler(this.BtnKillTaskChrome_Click);
+            // 
+            // txtBotName
+            // 
+            this.txtBotName.Location = new System.Drawing.Point(181, 134);
+            this.txtBotName.Name = "txtBotName";
+            this.txtBotName.Size = new System.Drawing.Size(100, 20);
+            this.txtBotName.TabIndex = 33;
+            // 
+            // lblBotname
+            // 
+            this.lblBotname.AutoSize = true;
+            this.lblBotname.Location = new System.Drawing.Point(178, 118);
+            this.lblBotname.Name = "lblBotname";
+            this.lblBotname.Size = new System.Drawing.Size(52, 13);
+            this.lblBotname.TabIndex = 34;
+            this.lblBotname.Text = "Bot name";
+            // 
+            // btnCheckUpdates
+            // 
+            this.btnCheckUpdates.Location = new System.Drawing.Point(181, 160);
+            this.btnCheckUpdates.Name = "btnCheckUpdates";
+            this.btnCheckUpdates.Size = new System.Drawing.Size(139, 20);
+            this.btnCheckUpdates.TabIndex = 35;
+            this.btnCheckUpdates.Text = "Check for updates";
+            this.btnCheckUpdates.UseVisualStyleBackColor = true;
+            this.btnCheckUpdates.Click += new System.EventHandler(this.BtnCheckUpdates_Click);
+            // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.Location = new System.Drawing.Point(12, 357);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(38, 13);
+            this.lblState.TabIndex = 36;
+            this.lblState.Text = "Ready";
+            // 
             // chromedriverSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 351);
+            this.ClientSize = new System.Drawing.Size(639, 379);
+            this.Controls.Add(this.lblState);
+            this.Controls.Add(this.btnCheckUpdates);
+            this.Controls.Add(this.lblBotname);
+            this.Controls.Add(this.txtBotName);
+            this.Controls.Add(this.btnKillTaskChrome);
+            this.Controls.Add(this.btnKillTaskChromedriver);
             this.Controls.Add(this.radioNew);
             this.Controls.Add(this.radioUser);
             this.Controls.Add(this.progressBar1);
@@ -397,7 +464,7 @@
             this.Controls.Add(this.txtChromedriverPath);
             this.Controls.Add(this.btnSelect);
             this.Name = "chromedriverSelector";
-            this.Text = "Select chromedriver";
+            this.Text = "SUGUS Version 3.6.5";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuValidar.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -439,6 +506,12 @@
         private System.Windows.Forms.ToolStripMenuItem validateToolStripMenuItem;
         private System.Windows.Forms.RadioButton radioUser;
         private System.Windows.Forms.RadioButton radioNew;
+        private System.Windows.Forms.Button btnKillTaskChromedriver;
+        private System.Windows.Forms.Button btnKillTaskChrome;
+        private System.Windows.Forms.TextBox txtBotName;
+        private System.Windows.Forms.Label lblBotname;
+        private System.Windows.Forms.Button btnCheckUpdates;
+        private System.Windows.Forms.Label lblState;
     }
 }
 

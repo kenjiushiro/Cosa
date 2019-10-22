@@ -10,6 +10,8 @@ using OpenQA.Selenium.Remote;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using Microsoft.Win32;
+using OpenQA.Selenium.Support.Events;
+using System.Threading;
 
 namespace Clases
 {
@@ -18,13 +20,15 @@ namespace Clases
         #region Atributos y constructores
         public delegate void Delegado(string aviso);
         public event Delegado CambioElemento;
+        Thread openBrowser;
+        private string url;
 
         protected static Queue<T> elementos;
         private IWebDriver driver;
         ChromeOptions options;
         ICapabilities capabilities;
         private bool recoverUserSession;
-
+        //IWebDriver eventDriver = new EventFiringWebDriver(IWebDriver driver);
         protected void EventoCambio(string textoAviso)
         {
             CambioElemento(textoAviso);
@@ -47,7 +51,7 @@ namespace Clases
 
         public Chrome(string chromedriverDirectory, string url) : this(chromedriverDirectory,true)
         {
-            driver.Url = url;
+            this.url = url;
         }
 
         /// <summary>
@@ -58,17 +62,41 @@ namespace Clases
         /// <param name="userSession">True to use the current user chrome session, false to open a new one</param>
         public Chrome(string chromedriverDirectory, string url,bool userSession):this(chromedriverDirectory, userSession)
         {
-            driver.Url = url;
+            this.url = url;
             this.recoverUserSession = userSession;
         }
 
+        public void StartDriver()
+        {
+
+            openBrowser = new Thread(this.OpenDriver);
+            openBrowser.Start();
+            //OpenDriver();
+        }
+
+        private void OpenDriver()
+        {
+            driver.Url = this.url;
+
+        }
         private void SetOptions()
         {
             //options.AddArgument(@"user-data-dir=C:\SeleniumProfiles\Default");
             if(this.recoverUserSession)
                 options.AddArgument(@"user-data-dir=C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Google\\Chrome\\User Data\\");
             options.LeaveBrowserRunning = true;
+        }
 
+        public static void KillTask(string processName)
+        {
+            Process[] procesos = Process.GetProcesses();
+            foreach(Process proceso in procesos)
+                if(processName == proceso.ProcessName)
+                {
+                    //Debug.Print(proceso.ProcessName);
+                    proceso.Kill();
+                }
+            
         }
 
         #endregion
@@ -119,6 +147,7 @@ namespace Clases
                 return version;
             }
         }
+
         public string ChromeVersion
         {
             get
@@ -198,6 +227,12 @@ namespace Clases
             a.Dismiss();
         }
 
+        public void ExecuteJavascriptFunction(string jsFunction)
+        {
+            IJavaScriptExecutor javaScript = (IJavaScriptExecutor)this.Driver;
+            javaScript.ExecuteScript("alert('asdsadsad')");
+        }
+        
         #endregion
     }
 }
