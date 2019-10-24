@@ -68,7 +68,6 @@ C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\SUGUS.pd
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Microsoft.WindowsAPICodePack.xml
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\WebDriver.xml
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\IronWebScraper.xml
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.csprojAssemblyReference.cache
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.FormMostrarElementos.resources
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.chromedriverSelector.resources
@@ -82,3 +81,5 @@ C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\obj\Debug\Forms.pd
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\HtmlAgilityPack.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\HtmlAgilityPack.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\HtmlAgilityPack.xml
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Polly.dll
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Forms\bin\Debug\Polly.xml

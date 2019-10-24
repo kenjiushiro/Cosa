@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(chromedriverSelector));
             this.btnSelect = new System.Windows.Forms.Button();
             this.txtChromedriverPath = new System.Windows.Forms.TextBox();
             this.contextMenuValidar = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -68,6 +69,8 @@
             this.btnCheckUpdates = new System.Windows.Forms.Button();
             this.lblState = new System.Windows.Forms.Label();
             this.btnShowAlert = new System.Windows.Forms.Button();
+            this.btnAttach = new System.Windows.Forms.Button();
+            this.btnDownloadDriver = new System.Windows.Forms.Button();
             this.contextMenuValidar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +81,7 @@
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(185, 22);
             this.btnSelect.TabIndex = 0;
-            this.btnSelect.Text = "Select folder";
+            this.btnSelect.Text = "Select chromedriver";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -89,22 +92,23 @@
             this.txtChromedriverPath.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtChromedriverPath.Name = "txtChromedriverPath";
             this.txtChromedriverPath.ReadOnly = true;
-            this.txtChromedriverPath.Size = new System.Drawing.Size(430, 23);
+            this.txtChromedriverPath.Size = new System.Drawing.Size(430, 26);
             this.txtChromedriverPath.TabIndex = 1;
             this.txtChromedriverPath.TextChanged += new System.EventHandler(this.TxtValor_TextChanged);
             // 
             // contextMenuValidar
             // 
+            this.contextMenuValidar.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuValidar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.validateToolStripMenuItem});
             this.contextMenuValidar.Name = "contextMenuValidar";
-            this.contextMenuValidar.Size = new System.Drawing.Size(116, 26);
+            this.contextMenuValidar.Size = new System.Drawing.Size(133, 28);
             this.contextMenuValidar.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuValidar_Opening);
             // 
             // validateToolStripMenuItem
             // 
             this.validateToolStripMenuItem.Name = "validateToolStripMenuItem";
-            this.validateToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.validateToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.validateToolStripMenuItem.Text = "Validate";
             this.validateToolStripMenuItem.Click += new System.EventHandler(this.ValidateToolStripMenuItem_Click);
             // 
@@ -113,7 +117,7 @@
             this.lblInstrucciones.AutoSize = true;
             this.lblInstrucciones.Location = new System.Drawing.Point(11, 10);
             this.lblInstrucciones.Name = "lblInstrucciones";
-            this.lblInstrucciones.Size = new System.Drawing.Size(186, 15);
+            this.lblInstrucciones.Size = new System.Drawing.Size(241, 20);
             this.lblInstrucciones.TabIndex = 2;
             this.lblInstrucciones.Text = "Select chromedriver location";
             this.lblInstrucciones.Click += new System.EventHandler(this.LblInstrucciones_Click);
@@ -156,7 +160,7 @@
             this.txtInputFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtInputFile.Name = "txtInputFile";
             this.txtInputFile.ReadOnly = true;
-            this.txtInputFile.Size = new System.Drawing.Size(430, 23);
+            this.txtInputFile.Size = new System.Drawing.Size(430, 26);
             this.txtInputFile.TabIndex = 6;
             // 
             // btnSelectFile
@@ -296,7 +300,7 @@
             this.lblProgress.AutoSize = true;
             this.lblProgress.Location = new System.Drawing.Point(441, 136);
             this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(121, 15);
+            this.lblProgress.Size = new System.Drawing.Size(158, 20);
             this.lblProgress.TabIndex = 20;
             this.lblProgress.Text = "Current work item";
             // 
@@ -338,7 +342,7 @@
             this.lblAlertas.AutoSize = true;
             this.lblAlertas.Location = new System.Drawing.Point(16, 118);
             this.lblAlertas.Name = "lblAlertas";
-            this.lblAlertas.Size = new System.Drawing.Size(51, 15);
+            this.lblAlertas.Size = new System.Drawing.Size(66, 20);
             this.lblAlertas.TabIndex = 24;
             this.lblAlertas.Text = "Alertas";
             // 
@@ -347,7 +351,7 @@
             this.lblThreading.AutoSize = true;
             this.lblThreading.Location = new System.Drawing.Point(650, 118);
             this.lblThreading.Name = "lblThreading";
-            this.lblThreading.Size = new System.Drawing.Size(70, 15);
+            this.lblThreading.Size = new System.Drawing.Size(94, 20);
             this.lblThreading.TabIndex = 25;
             this.lblThreading.Text = "Threading";
             // 
@@ -356,7 +360,7 @@
             this.lblExcelReading.AutoSize = true;
             this.lblExcelReading.Location = new System.Drawing.Point(457, 292);
             this.lblExcelReading.Name = "lblExcelReading";
-            this.lblExcelReading.Size = new System.Drawing.Size(91, 15);
+            this.lblExcelReading.Size = new System.Drawing.Size(119, 20);
             this.lblExcelReading.TabIndex = 26;
             this.lblExcelReading.Text = "Excel reading";
             // 
@@ -375,7 +379,7 @@
             this.radioUser.Location = new System.Drawing.Point(335, 341);
             this.radioUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioUser.Name = "radioUser";
-            this.radioUser.Size = new System.Drawing.Size(105, 19);
+            this.radioUser.Size = new System.Drawing.Size(134, 24);
             this.radioUser.TabIndex = 29;
             this.radioUser.TabStop = true;
             this.radioUser.Text = "User session";
@@ -387,7 +391,7 @@
             this.radioNew.Location = new System.Drawing.Point(335, 368);
             this.radioNew.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioNew.Name = "radioNew";
-            this.radioNew.Size = new System.Drawing.Size(104, 19);
+            this.radioNew.Size = new System.Drawing.Size(132, 24);
             this.radioNew.TabIndex = 30;
             this.radioNew.TabStop = true;
             this.radioNew.Text = "New session";
@@ -417,24 +421,24 @@
             // 
             // txtBotName
             // 
-            this.txtBotName.Location = new System.Drawing.Point(241, 155);
+            this.txtBotName.Location = new System.Drawing.Point(221, 155);
             this.txtBotName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBotName.Name = "txtBotName";
-            this.txtBotName.Size = new System.Drawing.Size(132, 23);
+            this.txtBotName.Size = new System.Drawing.Size(132, 26);
             this.txtBotName.TabIndex = 33;
             // 
             // lblBotname
             // 
             this.lblBotname.AutoSize = true;
-            this.lblBotname.Location = new System.Drawing.Point(238, 136);
+            this.lblBotname.Location = new System.Drawing.Point(218, 136);
             this.lblBotname.Name = "lblBotname";
-            this.lblBotname.Size = new System.Drawing.Size(65, 15);
+            this.lblBotname.Size = new System.Drawing.Size(85, 20);
             this.lblBotname.TabIndex = 34;
             this.lblBotname.Text = "Bot name";
             // 
             // btnCheckUpdates
             // 
-            this.btnCheckUpdates.Location = new System.Drawing.Point(241, 185);
+            this.btnCheckUpdates.Location = new System.Drawing.Point(221, 186);
             this.btnCheckUpdates.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCheckUpdates.Name = "btnCheckUpdates";
             this.btnCheckUpdates.Size = new System.Drawing.Size(195, 34);
@@ -448,7 +452,7 @@
             this.lblState.AutoSize = true;
             this.lblState.Location = new System.Drawing.Point(16, 412);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(44, 15);
+            this.lblState.Size = new System.Drawing.Size(58, 20);
             this.lblState.TabIndex = 36;
             this.lblState.Text = "Ready";
             // 
@@ -463,11 +467,35 @@
             this.btnShowAlert.UseVisualStyleBackColor = true;
             this.btnShowAlert.Click += new System.EventHandler(this.BtnShowAlert_Click);
             // 
+            // btnAttach
+            // 
+            this.btnAttach.Location = new System.Drawing.Point(222, 263);
+            this.btnAttach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAttach.Name = "btnAttach";
+            this.btnAttach.Size = new System.Drawing.Size(195, 34);
+            this.btnAttach.TabIndex = 38;
+            this.btnAttach.Text = "Attach  Browser";
+            this.btnAttach.UseVisualStyleBackColor = true;
+            this.btnAttach.Click += new System.EventHandler(this.BtnAttach_Click);
+            // 
+            // btnDownloadDriver
+            // 
+            this.btnDownloadDriver.Location = new System.Drawing.Point(221, 305);
+            this.btnDownloadDriver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDownloadDriver.Name = "btnDownloadDriver";
+            this.btnDownloadDriver.Size = new System.Drawing.Size(195, 34);
+            this.btnDownloadDriver.TabIndex = 39;
+            this.btnDownloadDriver.Text = "Download driver";
+            this.btnDownloadDriver.UseVisualStyleBackColor = true;
+            this.btnDownloadDriver.Click += new System.EventHandler(this.BtnDownloadDriver_Click);
+            // 
             // chromedriverSelector
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 458);
+            this.Controls.Add(this.btnDownloadDriver);
+            this.Controls.Add(this.btnAttach);
             this.Controls.Add(this.btnShowAlert);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.btnCheckUpdates);
@@ -505,9 +533,10 @@
             this.Controls.Add(this.btnSelect);
             this.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "chromedriverSelector";
-            this.Text = "SUGUS Version 3.6.5";
+            this.Text = "Vicky GUI";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuValidar.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -556,6 +585,8 @@
         private System.Windows.Forms.Button btnCheckUpdates;
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.Button btnShowAlert;
+        private System.Windows.Forms.Button btnAttach;
+        private System.Windows.Forms.Button btnDownloadDriver;
     }
 }
 

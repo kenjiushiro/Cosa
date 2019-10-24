@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Archivos.Excepciones;
 using Excepciones;
 using HtmlAgilityPack;
 
@@ -51,6 +54,24 @@ namespace Clases
         {
             string botVersion;
             return documento.GetElementbyId(id).InnerText;
+        }
+
+        public static void DriverVersions()
+        {
+
+        }
+
+
+        public static void DownloadFile(string version,string filepath)
+        {
+            
+            string urlAddress;
+            filepath = Path.Combine(filepath, "chromedriverwin_32.rar");
+            urlAddress = string.Format("http://chromedriver.storage.googleapis.com/{0}/chromedriver_win32.zip", version);
+            using (WebClient clientD = new WebClient())
+            {
+                clientD.DownloadFile(urlAddress, filepath);
+            };
         }
     }
 }

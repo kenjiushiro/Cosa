@@ -12,6 +12,9 @@ using System.Diagnostics;
 using Microsoft.Win32;
 using OpenQA.Selenium.Support.Events;
 using System.Threading;
+using System.IO;
+using System.Windows;
+using Polly;
 
 namespace Clases
 {
@@ -41,27 +44,58 @@ namespace Clases
             CambioElemento(textoAviso);
         }
 
-        public Chrome(string chromedriverDirectory,bool userSession)
+        public Chrome(string chromeDriverPath,int nada)
         {
+            ChromeOptions options = new ChromeOptions();
+            string chromeDriverDirectory = Path.GetDirectoryName(chromeDriverPath);
+            options.DebuggerAddress = "127.0.0.1:62882";
+            var policy = Policy
+              .Handle<InvalidOperationException>()
+              .WaitAndRetry(10, t => TimeSpan.FromSeconds(1));
+
+            policy.Execute(() =>
+            {
+                driver = new ChromeDriver(chromeDriverDirectory, options);
+                driver.Url = "https://www.google.com";
+            });
+        }
+
+        public Chrome(string chromedriverPath,bool userSession)
+        {
+            string chromedriverDirectory="";
+
             options = new ChromeOptions();
             recoverUserSession = userSession;
             SetOptions();
-            driver = new ChromeDriver(chromedriverDirectory,options);
+            if (!File.Exists(chromedriverPath))
+            {
+                throw new FileNotFoundException("Chromedriver could not be found");
+            }
+            chromedriverDirectory = Path.GetDirectoryName(chromedriverPath);
+            try
+            {
+                driver = new ChromeDriver(chromedriverDirectory,options);
+            }
+            catch(Exception ex)
+            {
+                throw new InvalidCastException("The chromedriver is not valid. Please download the chromedriver from\nhttps://chromedriver.chromium.org/");
+            }
+
             capabilities = ((RemoteWebDriver)driver).Capabilities;
             driver.Manage().Window.Maximize();
         }
 
-        public Chrome(string chromedriverDirectory):this(chromedriverDirectory,true)
+        public Chrome(string chromedriverPath) :this(chromedriverPath, true)
         {
 
         }
 
-        public Chrome(string chromedriverDirectory, string url) : this(chromedriverDirectory,true)
+        public Chrome(string chromedriverPath, string url) : this(chromedriverPath, true)
         {
             this.url = url;
         }
 
-        public Chrome(string chromedriverDirectory, string url,bool userSession):this(chromedriverDirectory, userSession)
+        public Chrome(string chromedriverPath, string url,bool userSession):this(chromedriverPath, userSession)
         {
             this.url = url;
             this.recoverUserSession = userSession;
@@ -168,7 +202,7 @@ namespace Clases
         /// <summary>
         /// Retorna la version de Google Chrome
         /// </summary>
-        public string ChromeVersion
+        public static string ChromeVersion
         {
             get
             {
@@ -271,9 +305,19 @@ namespace Clases
         public void ExecuteJavascriptFunction(string jsFunction)
         {
             IJavaScriptExecutor javaScript = (IJavaScriptExecutor)this.Driver;
-            javaScript.ExecuteScript("alert('asdsadsad')");
+            javaScript.ExecuteScript(jsFunction);
         }
         
+
+        public void LaunchBrowser_Click(object sender, RoutedEventArgs e)
+        {
+            Process proc = new Process();
+            proc.StartInfo.FileName = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
+            proc.StartInfo.Arguments = "https://www.intellitect.com/blog/ --new-window --remote-debugging-port=9222 --user-data-dir=C:\\Temp";
+            proc.Start();
+        }
+
+
         #endregion
     }
 }

@@ -32,11 +32,9 @@ C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\T
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\TestSelenium.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\Clases.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\WebDriver.dll
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\IronWebScraper.dll
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\Excepciones.dll
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\Newtonsoft.Json.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\Clases.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\WebDriver.xml
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\IronWebScraper.xml
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\Excepciones.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\obj\Debug\TestSelenium.csproj.CopyComplete
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\HtmlAgilityPack.dll
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\HtmlAgilityPack.pdb
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\TestSelenium\bin\Debug\HtmlAgilityPack.xml

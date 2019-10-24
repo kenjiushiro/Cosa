@@ -82,7 +82,14 @@ namespace Clases
         {
             try
             {
-                Marshal.ReleaseComObject(sh);
+               Marshal.ReleaseComObject(sh);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            try
+            {
                 //WRITE close and release
                 wb.Close();
                 Marshal.ReleaseComObject(wb);

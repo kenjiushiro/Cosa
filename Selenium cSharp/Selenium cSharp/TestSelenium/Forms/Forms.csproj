@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bin\Debug\robotIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="IronWebScraper, Version=4.0.4.29861, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -90,6 +93,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="sugusParametersForm.resx">
       <DependentUpon>sugusParametersForm.cs</DependentUpon>
@@ -117,6 +121,12 @@
       <Project>{D99E61AD-B008-494A-A9B6-95D663ED7730}</Project>
       <Name>SUGUS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\robotIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,7 +41,6 @@ C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Clases.
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Clases.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\WebDriver.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\WebDriver.xml
-C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\obj\Debug\SeleniumBotBase.csprojAssemblyReference.cache
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\obj\Debug\SeleniumBotBase.csproj.ResolveComReference.cache
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\obj\Debug\SeleniumBotBase.csproj.CoreCompileInputs.cache
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\obj\Debug\SeleniumBotBase.csproj.CopyComplete
@@ -52,3 +51,10 @@ C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\HtmlAgi
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\HtmlAgilityPack.xml
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\WebDriver.Support.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\WebDriver.Support.xml
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\obj\Debug\SeleniumBotBase.csprojAssemblyReference.cache
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Polly.dll
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Polly.xml
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Newtonsoft.Json.dll
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\System.Net.Http.Formatting.dll
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\Newtonsoft.Json.xml
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\Clases\bin\Debug\System.Net.Http.Formatting.xml

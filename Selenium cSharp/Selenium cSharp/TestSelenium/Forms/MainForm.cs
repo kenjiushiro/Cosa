@@ -54,8 +54,6 @@ namespace Forms
         {
             version = "3.6.5";
             this.txtBotName.Text = "SUGUS";
-            Icon icon = new Icon(Environment.CurrentDirectory + "\\robotIcon.ico");
-            this.Icon = icon;
             excelParametersFile = new BinaryFile<ExcelParameters>("SUGUS", "parameters.bin");
             chromedriverFile = new TxtFile("SUGUS", "chromedriverPath.txt");
             radioNew.Checked = true;
@@ -76,13 +74,11 @@ namespace Forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = "C:\\Users";
-            dialog.IsFolderPicker = true;
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Executable| *.exe";
+            dialog.InitialDirectory = "C:\\";
+            if (dialog.ShowDialog() == DialogResult.OK)
                 txtChromedriverPath.Text =  dialog.FileName;
-            }
         }
 
         private void TxtValor_TextChanged(object sender, EventArgs e)
@@ -165,23 +161,27 @@ namespace Forms
         {
             string chromedriverVersion;
             string browserVersion;
-            if (File.Exists(this.txtChromedriverPath.Text + "\\chromedriver.exe"))
+            try
+            {
                 if (myScheduling == null)
                 {
                     myScheduling = new MyScheduling(txtChromedriverPath.Text, false);
                     chromedriverVersion = myScheduling.DriverVersion;
-                    browserVersion = myScheduling.ChromeVersion;
+                    browserVersion = MyScheduling.ChromeVersion;
                     myScheduling.Close();
                     MessageBox.Show("Chromedriver version: " + chromedriverVersion + "\n" + "Chrome browser version: " + browserVersion);
                 }
                 else
                 {
                     chromedriverVersion = myScheduling.DriverVersion;
-                    browserVersion = myScheduling.ChromeVersion;
+                    browserVersion = MyScheduling.ChromeVersion;
                     MessageBox.Show("Chromedriver version: " + chromedriverVersion + "\n" + "Chrome browser version: " + browserVersion);
                 }
-            else
-                MessageBox.Show("The chromedriver could not be found at the specified location");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
 
 
@@ -390,14 +390,30 @@ namespace Forms
             if (!MyScheduling.QueueCreated)
             {
                 CambiarLabelState("Reading excel");
-                MessageBox.Show(MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName));
+                try
+                {
+                    MessageBox.Show(MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName));
+                }
+                catch(Exception ex)
+                {
+                    if (ex is WorksheetNotFound || ex is WorkbookNotFound || ex is FileNotFoundException)
+                        MessageBox.Show(ex.Message);
+                }
             }
             else
                 if(MessageBox.Show("Discard loaded data?","A file was already loaded", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     CambiarLabelState("Reading excel");
-                    MessageBox.Show(MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName));
-                }
+                    try
+                    {
+                        MessageBox.Show(MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName));
+                    }
+                        catch (Exception ex)
+                    {
+                        if (ex is WorksheetNotFound || ex is WorkbookNotFound)
+                            MessageBox.Show(ex.Message);
+                    }
+        }
             CambiarLabelState("Ready");
         }
 
@@ -426,6 +442,7 @@ namespace Forms
             try
             {
                 excel = new Excel(excelParameters.Path, excelParameters.SheetName);
+                excel.Close();
             }
             catch(Exception ex )
             {
@@ -440,7 +457,7 @@ namespace Forms
 
             }
             //this.txtChromedriverPath.Text 
-            if (!File.Exists(this.txtChromedriverPath.Text + "\\chromedriver.exe"))
+            if (!File.Exists(this.txtChromedriverPath.Text))
             {
                 mensaje.AppendLine("Chromedriver file could not be found in the specified location");
                 retorno = false;
@@ -465,7 +482,8 @@ namespace Forms
         {
             try
             {
-                WebScraper ws = new WebScraper("http://localhost:8000");
+                //WebScraper ws = new WebScraper("http://localhost:8000");
+                WebScraper ws = new WebScraper("https://botsversions.000webhostapp.com/");
                 //WebScraper ws = new WebScraper("http://www.gooasdsaasdgle.com");
                 string botVersion;
                 try
@@ -494,7 +512,59 @@ namespace Forms
 
         private void BtnShowAlert_Click(object sender, EventArgs e)
         {
-            myScheduling.ExecuteJavascriptFunction("alert('asdsadsadsa')");
+            try
+            {
+                myScheduling.ExecuteJavascriptFunction("alert('No seas freaky vota a Vicky')");
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void BtnAttach_Click(object sender, EventArgs e)
+        {
+            if (Validar())
+            {
+                myScheduling = new MyScheduling(this.txtChromedriverPath.Text,1);
+                myScheduling.StartDriver();
+                myScheduling.CambioElemento += CambiarLabelItem;
+                if (!MyScheduling.QueueCreated)
+                    MyScheduling.LeerData(excelParameters.Path, excelParameters.SheetName);
+                this.progressBar1.Value = 0;
+                this.progressBar1.Maximum = MyScheduling.Elementos.Count;
+                bot = new Thread(myScheduling.DoStuff);
+                bot.Start();
+            }
+        }
+
+        private void BtnDownloadDriver_Click(object sender, EventArgs e)
+        {
+            WebScraper ws = new WebScraper("https://botsversions.000webhostapp.com/");
+            string chromeVersion;
+            chromeVersion = ws.GetTextByID("chromeVersion").Trim();
+            MessageBox.Show(chromeVersion);
+
+            string driverPath;
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = "C:\\Users";
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                driverPath =  dialog.FileName;
+                try
+                {
+                    WebScraper.DownloadFile(chromeVersion, driverPath);
+                    MessageBox.Show("Driver successfuly downloaded");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Driver could not be downloaded");
+                }
+            }
+
+
+            //WebScraper.DownloadFile("");
 
         }
     }

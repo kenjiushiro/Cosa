@@ -22,6 +22,8 @@ namespace SUGUS
         {   
 
         }
+        public MyScheduling(string chromedriverPath, int i) : base(chromedriverPath, i)
+        { }
 
         public MyScheduling(string chromedriverPath, bool userSession) : base(chromedriverPath, userSession)
         {
@@ -49,7 +51,8 @@ namespace SUGUS
         public static string LeerData(string inputFilePath,string sheetName)
         {
 
-            Excel excel = new Excel(inputFilePath, sheetName);
+            Excel excel;
+            excel= new Excel(inputFilePath, sheetName);
             try
             {
                 RolDemanda rol;
@@ -71,6 +74,7 @@ namespace SUGUS
             }
             catch (Exception e)
             {
+                excel.Close();
                 throw e;
             }
             finally

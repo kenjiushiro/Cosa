@@ -41,3 +41,5 @@ C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\obj\Debug\SUGUS.pd
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\HtmlAgilityPack.dll
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\HtmlAgilityPack.pdb
 C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\HtmlAgilityPack.xml
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Polly.dll
+C:\Eu\Cosa\Selenium cSharp\Selenium cSharp\TestSelenium\SUGUS\bin\Debug\Polly.xml
