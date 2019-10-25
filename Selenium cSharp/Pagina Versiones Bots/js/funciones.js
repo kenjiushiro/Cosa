@@ -1,18 +1,17 @@
 // document.addEventListener("load",CargarBots);
-window.onload = AgregarBot;
-
+window.onload = Test;
 function CargarBots()
 {
     AgregarBot("SUGUS","3.5");
     AgregarBot("Cabsha","1.2");
 }
 
-function AgregarBot()
+function Test()
 {
     var pelemento = document.createElement("p");
     var ptexto = document.createTextNode("LALALALA");
     pelemento.appendChild(ptexto);
     pelemento.id = "Lala";
-    document.getElementById("ancla").append(pelemento);
+    document.getElementById("ancla").appendChild(pelemento);
 
 }

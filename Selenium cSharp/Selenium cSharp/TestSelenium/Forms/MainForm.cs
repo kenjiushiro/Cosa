@@ -280,14 +280,6 @@ namespace Forms
 
         }
 
-        private void BtnBmf_Click(object sender, EventArgs e)
-        {
-            Queue<RolDemanda> roles = MyScheduling.Elementos;
-            foreach(RolDemanda rol in roles)
-            {
-                Debug.Print(rol.ToString()); 
-            }
-        }
 
         private void BtnAlertAccept_Click(object sender, EventArgs e)
         {
@@ -564,8 +556,15 @@ namespace Forms
             }
 
 
+
+
             //WebScraper.DownloadFile("");
 
+        }
+        private void BtnBmf_Click(object sender, EventArgs e)
+        {
+            WebScraper ws = new WebScraper("http://chromedriver.storage.googleapis.com/index.html");
+            
         }
     }
 }

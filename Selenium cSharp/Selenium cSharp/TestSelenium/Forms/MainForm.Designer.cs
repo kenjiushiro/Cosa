@@ -137,7 +137,7 @@
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(185, 22);
-            this.btnGuardar.TabIndex = 3;
+            this.btnGuardar.TabIndex = 10;
             this.btnGuardar.Text = "Save";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
@@ -148,7 +148,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(185, 22);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
@@ -169,7 +169,7 @@
             this.btnSelectFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(185, 22);
-            this.btnSelectFile.TabIndex = 7;
+            this.btnSelectFile.TabIndex = 2;
             this.btnSelectFile.Text = "Select file";
             this.btnSelectFile.UseVisualStyleBackColor = true;
             this.btnSelectFile.Click += new System.EventHandler(this.BtnSelectFile_Click);
@@ -180,7 +180,7 @@
             this.btnFileParameters.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnFileParameters.Name = "btnFileParameters";
             this.btnFileParameters.Size = new System.Drawing.Size(185, 22);
-            this.btnFileParameters.TabIndex = 8;
+            this.btnFileParameters.TabIndex = 3;
             this.btnFileParameters.Text = "File Parameters";
             this.btnFileParameters.UseVisualStyleBackColor = true;
             this.btnFileParameters.Click += new System.EventHandler(this.BtnFileParameters_Click);
@@ -191,7 +191,7 @@
             this.btnDriverVersion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDriverVersion.Name = "btnDriverVersion";
             this.btnDriverVersion.Size = new System.Drawing.Size(185, 22);
-            this.btnDriverVersion.TabIndex = 9;
+            this.btnDriverVersion.TabIndex = 1;
             this.btnDriverVersion.Text = "Version";
             this.btnDriverVersion.UseVisualStyleBackColor = true;
             this.btnDriverVersion.Click += new System.EventHandler(this.BtnDriverVersion_Click);
@@ -202,7 +202,7 @@
             this.btnRunBot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRunBot.Name = "btnRunBot";
             this.btnRunBot.Size = new System.Drawing.Size(185, 22);
-            this.btnRunBot.TabIndex = 11;
+            this.btnRunBot.TabIndex = 25;
             this.btnRunBot.Text = "Run bot";
             this.btnRunBot.UseVisualStyleBackColor = true;
             this.btnRunBot.Click += new System.EventHandler(this.BtnRunBot_Click);
@@ -213,7 +213,7 @@
             this.btnThreadState.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnThreadState.Name = "btnThreadState";
             this.btnThreadState.Size = new System.Drawing.Size(185, 22);
-            this.btnThreadState.TabIndex = 12;
+            this.btnThreadState.TabIndex = 18;
             this.btnThreadState.Text = "Thread state";
             this.btnThreadState.UseVisualStyleBackColor = true;
             this.btnThreadState.Click += new System.EventHandler(this.BtnThreadState_Click);
@@ -224,7 +224,7 @@
             this.btnPause.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(185, 22);
-            this.btnPause.TabIndex = 13;
+            this.btnPause.TabIndex = 16;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = true;
             this.btnPause.Click += new System.EventHandler(this.BtnPause_Click);
@@ -235,7 +235,7 @@
             this.btnResume.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnResume.Name = "btnResume";
             this.btnResume.Size = new System.Drawing.Size(185, 22);
-            this.btnResume.TabIndex = 14;
+            this.btnResume.TabIndex = 17;
             this.btnResume.Text = "Resume";
             this.btnResume.UseVisualStyleBackColor = true;
             this.btnResume.Click += new System.EventHandler(this.BtnResume_Click);
@@ -246,18 +246,18 @@
             this.btnBmf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBmf.Name = "btnBmf";
             this.btnBmf.Size = new System.Drawing.Size(185, 22);
-            this.btnBmf.TabIndex = 15;
+            this.btnBmf.TabIndex = 26;
             this.btnBmf.Text = "BMF";
             this.btnBmf.UseVisualStyleBackColor = true;
             this.btnBmf.Click += new System.EventHandler(this.BtnBmf_Click);
             // 
             // btnAlertAccept
             // 
-            this.btnAlertAccept.Location = new System.Drawing.Point(16, 142);
+            this.btnAlertAccept.Location = new System.Drawing.Point(20, 142);
             this.btnAlertAccept.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAlertAccept.Name = "btnAlertAccept";
             this.btnAlertAccept.Size = new System.Drawing.Size(185, 22);
-            this.btnAlertAccept.TabIndex = 16;
+            this.btnAlertAccept.TabIndex = 4;
             this.btnAlertAccept.Text = "Accept alert";
             this.btnAlertAccept.UseVisualStyleBackColor = true;
             this.btnAlertAccept.Click += new System.EventHandler(this.BtnAlertAccept_Click);
@@ -268,7 +268,7 @@
             this.btnAlertDismiss.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAlertDismiss.Name = "btnAlertDismiss";
             this.btnAlertDismiss.Size = new System.Drawing.Size(185, 22);
-            this.btnAlertDismiss.TabIndex = 17;
+            this.btnAlertDismiss.TabIndex = 5;
             this.btnAlertDismiss.Text = "Dismiss alert";
             this.btnAlertDismiss.UseVisualStyleBackColor = true;
             this.btnAlertDismiss.Click += new System.EventHandler(this.BtnAlertDismiss_Click);
@@ -279,7 +279,7 @@
             this.btnAlertRead.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAlertRead.Name = "btnAlertRead";
             this.btnAlertRead.Size = new System.Drawing.Size(185, 22);
-            this.btnAlertRead.TabIndex = 18;
+            this.btnAlertRead.TabIndex = 6;
             this.btnAlertRead.Text = "Leer";
             this.btnAlertRead.UseVisualStyleBackColor = true;
             this.btnAlertRead.Click += new System.EventHandler(this.BtnAlertRead_Click);
@@ -290,7 +290,7 @@
             this.btnPeek.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPeek.Name = "btnPeek";
             this.btnPeek.Size = new System.Drawing.Size(185, 22);
-            this.btnPeek.TabIndex = 19;
+            this.btnPeek.TabIndex = 20;
             this.btnPeek.Text = "Peek";
             this.btnPeek.UseVisualStyleBackColor = true;
             this.btnPeek.Click += new System.EventHandler(this.BtnPeek_Click);
@@ -332,7 +332,7 @@
             this.btnEnd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEnd.Name = "btnEnd";
             this.btnEnd.Size = new System.Drawing.Size(185, 22);
-            this.btnEnd.TabIndex = 23;
+            this.btnEnd.TabIndex = 19;
             this.btnEnd.Text = "End";
             this.btnEnd.UseVisualStyleBackColor = true;
             this.btnEnd.Click += new System.EventHandler(this.BtnEnd_Click);
@@ -380,7 +380,7 @@
             this.radioUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioUser.Name = "radioUser";
             this.radioUser.Size = new System.Drawing.Size(134, 24);
-            this.radioUser.TabIndex = 29;
+            this.radioUser.TabIndex = 23;
             this.radioUser.TabStop = true;
             this.radioUser.Text = "User session";
             this.radioUser.UseVisualStyleBackColor = true;
@@ -392,7 +392,7 @@
             this.radioNew.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioNew.Name = "radioNew";
             this.radioNew.Size = new System.Drawing.Size(132, 24);
-            this.radioNew.TabIndex = 30;
+            this.radioNew.TabIndex = 24;
             this.radioNew.TabStop = true;
             this.radioNew.Text = "New session";
             this.radioNew.UseVisualStyleBackColor = true;
@@ -403,7 +403,7 @@
             this.btnKillTaskChromedriver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnKillTaskChromedriver.Name = "btnKillTaskChromedriver";
             this.btnKillTaskChromedriver.Size = new System.Drawing.Size(185, 22);
-            this.btnKillTaskChromedriver.TabIndex = 31;
+            this.btnKillTaskChromedriver.TabIndex = 8;
             this.btnKillTaskChromedriver.Text = "Kill Chromedriver";
             this.btnKillTaskChromedriver.UseVisualStyleBackColor = true;
             this.btnKillTaskChromedriver.Click += new System.EventHandler(this.BtnKillTaskChromedriver_Click);
@@ -414,18 +414,19 @@
             this.btnKillTaskChrome.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnKillTaskChrome.Name = "btnKillTaskChrome";
             this.btnKillTaskChrome.Size = new System.Drawing.Size(185, 22);
-            this.btnKillTaskChrome.TabIndex = 32;
+            this.btnKillTaskChrome.TabIndex = 9;
             this.btnKillTaskChrome.Text = "Kill chrome";
             this.btnKillTaskChrome.UseVisualStyleBackColor = true;
             this.btnKillTaskChrome.Click += new System.EventHandler(this.BtnKillTaskChrome_Click);
             // 
             // txtBotName
             // 
+            this.txtBotName.AcceptsReturn = true;
             this.txtBotName.Location = new System.Drawing.Point(221, 155);
             this.txtBotName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBotName.Name = "txtBotName";
             this.txtBotName.Size = new System.Drawing.Size(132, 26);
-            this.txtBotName.TabIndex = 33;
+            this.txtBotName.TabIndex = 12;
             // 
             // lblBotname
             // 
@@ -442,7 +443,7 @@
             this.btnCheckUpdates.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCheckUpdates.Name = "btnCheckUpdates";
             this.btnCheckUpdates.Size = new System.Drawing.Size(195, 34);
-            this.btnCheckUpdates.TabIndex = 35;
+            this.btnCheckUpdates.TabIndex = 13;
             this.btnCheckUpdates.Text = "Check for updates";
             this.btnCheckUpdates.UseVisualStyleBackColor = true;
             this.btnCheckUpdates.Click += new System.EventHandler(this.BtnCheckUpdates_Click);
@@ -462,7 +463,7 @@
             this.btnShowAlert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnShowAlert.Name = "btnShowAlert";
             this.btnShowAlert.Size = new System.Drawing.Size(185, 22);
-            this.btnShowAlert.TabIndex = 37;
+            this.btnShowAlert.TabIndex = 7;
             this.btnShowAlert.Text = "Alerta";
             this.btnShowAlert.UseVisualStyleBackColor = true;
             this.btnShowAlert.Click += new System.EventHandler(this.BtnShowAlert_Click);
@@ -473,7 +474,7 @@
             this.btnAttach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAttach.Name = "btnAttach";
             this.btnAttach.Size = new System.Drawing.Size(195, 34);
-            this.btnAttach.TabIndex = 38;
+            this.btnAttach.TabIndex = 14;
             this.btnAttach.Text = "Attach  Browser";
             this.btnAttach.UseVisualStyleBackColor = true;
             this.btnAttach.Click += new System.EventHandler(this.BtnAttach_Click);
@@ -484,7 +485,7 @@
             this.btnDownloadDriver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDownloadDriver.Name = "btnDownloadDriver";
             this.btnDownloadDriver.Size = new System.Drawing.Size(195, 34);
-            this.btnDownloadDriver.TabIndex = 39;
+            this.btnDownloadDriver.TabIndex = 15;
             this.btnDownloadDriver.Text = "Download driver";
             this.btnDownloadDriver.UseVisualStyleBackColor = true;
             this.btnDownloadDriver.Click += new System.EventHandler(this.BtnDownloadDriver_Click);
