@@ -568,7 +568,41 @@ For Each linea In arr
 	End If
 Next linea
 
+==================================================================================================================================================================================================================================================
+
+Sub ResizeArrayToRange()
+    Dim arrayLinea As Variant
+    Dim i As Long
+    Dim Destination As Range
+    
+    For i = 2 To 1000
+        arrayLinea = Split(Sheet1.Range("A" & i).Value, ",")
+        Set Destination = Range("A" & i)
+        Set Destination = Destination.Resize(1, UBound(arrayLinea))
+        Destination.Value = arrayLinea
+    Next i
+End Sub
+
+==================================================================================================================================================================================================================================================
+Timer en milisegundos
 
 
+Private mlngStart As Long
+Private Declare Function GetTickCount Lib "kernel32" () As Long
 
+Public Sub StartTimer()
+    mlngStart = GetTickCount
+End Sub
 
+Public Function EndTimer() As Long
+    EndTimer = (GetTickCount - mlngStart)
+End Function
+You use the code as follows:
+
+Dim sw as StopWatch
+Set sw = New StopWatch
+sw.StartTimer
+
+' Do whatever you want to time here
+
+Debug.Print "That took: " & sw.EndTimer & "milliseconds"
