@@ -606,3 +606,36 @@ sw.StartTimer
 ' Do whatever you want to time here
 
 Debug.Print "That took: " & sw.EndTimer & "milliseconds"
+
+
+==================================================================================================================================================================================================================================================
+
+function ReemplazarTildes(stringTildes)
+    stringTildes = replace(stringTildes,"á",Chr(225))
+    stringTildes = replace(stringTildes,"Á",Chr(193))
+    
+    stringTildes = replace(stringTildes,"é",Chr(233))
+    stringTildes = replace(stringTildes,"É",Chr(201))
+    
+    stringTildes = replace(stringTildes,"í",Chr(237))
+    stringTildes = replace(stringTildes,"Í",Chr(205))
+    
+    stringTildes = replace(stringTildes,"ó",Chr(243))
+    stringTildes = replace(stringTildes,"Ó",Chr(211))
+    
+    stringTildes = replace(stringTildes,"ú",Chr(250))
+    stringTildes = replace(stringTildes,"Ú",Chr(218))
+
+    stringTildes = replace(stringTildes,"°",Chr(176))
+    stringTildes = replace(stringTildes,"º",Chr(186))
+
+    ReemplazarTildes = stringTildes
+end function
+
+==================================================================================================================================================================================================================================================
+
+RESIZEAR RANGE AL TAMAÑO DE UN ARRAY !!!!!!!!!!!11!!11!!!!!!!!!!!!!!!!!1
+
+shFacturaDestino.Range("A4").Resize(UBound(arrayDestino, 1), UBound(arrayDestino, 2)).Value = arrayDestino
+	
+==================================================================================================================================================================================================================================================	    
