@@ -1,6 +1,12 @@
-sub writeLog(msg)
-    wscript.echo now & ": " & msg
-end Sub
+'Funcion par aincluir otros files
+Sub Include(strFile)
+	Set objFSO = CreateObject("Scripting.FileSystemObject")
+	Set objTextFile = objFSO.OpenTextFile(strFile, 1)
+	ExecuteGlobal objTextFile.ReadAll
+	objTextFile.Close
+	Set objFSO = Nothing
+	Set objTextFile = Nothing
+End Sub
 
 
 if Wscript.Arguments.count <> 0 then
@@ -10,7 +16,12 @@ if Wscript.Arguments.count <> 0 then
     msgbox libreriaPath
 end if
 
-WScript.stdout.WriteLine Right("00" & month(now),2)
+'Devuelven fechas con 2 cifras
+mes = Right("00" & month(now),2)
+dia = Right("00" & day(now),2)
+hora = Right("00" & hour(now),2)
+minutos = Right("00" & minute(now),2)
+segundos = Right("00" & second(now),2)
 
 'Crear hoja nueva
 function CrearHoja(wb,nombre)
@@ -28,7 +39,7 @@ end sub
 ' Set dictDestinatarios = CreateObject("Scripting.Dictionary")
 
 
-
+'Devuelve el numero de columna de un array de datos
 function GetColumnNumberFromArray(arr,columnName)
     columnName = LCase(columnName)
     GetColumnNumberFromArray = 0
@@ -40,11 +51,13 @@ function GetColumnNumberFromArray(arr,columnName)
     Next
 end function
 
+'Retorna la primer instancia de excel abierta
 Function GetExcelApp()
     on error resume next
     Set GetExcelApp = GetObject(,"Excel.Application")
 end function
 
+'Retorna el objeto workbook si ya esta abierto, si no esta abierto lo abre.
 Function GetWorkbook(excelPath)
     on error resume next
     Set excelApp = GetObject(,"Excel.Application")
@@ -70,18 +83,20 @@ Function GetWorkbook(excelPath)
 End Function
 
 
-
+'Retorna un workbook pasandole parte del nombre
 Function GetWorkbookConNombre(nombreWb)
     on error resume next
     Set excelApp = GetObject(,"Excel.Application")
     
-    For Each Workbook In excelApp.Workbooks
+    For Each wb In excelApp.Workbooks
         If InStr(1, Workbook.Name, nombreWb) > 0 Then
-            set 
+            set GetWorkbookConNombre = wb
+            exit for
         End If
     Next
 End Function
 
+'cierra la instancia de excel
 sub CerrarExcel()
     on error resume next
     Set excelApp = GetObject(,"Excel.Application")
@@ -90,6 +105,9 @@ sub CerrarExcel()
     err.clear
 end sub
 
+'crea una columna en una worksheet, hoja es el objeto worksheet, buscar es el nombre de referencia 
+'de donde queremos pegar la columna, posicionColumnaNuevo = 0 para pegarlo a la izq, o 1 para la derecha,
+'y nombre nuevo es el nombre de la columna
 Sub InsertarColumna(hoja, buscar, posicionColumnaNueva, nombreNuevo)
     col = GetColumna(hoja, buscar, 1) + posicionColumnaNueva
     letra = Col_Letter(hoja,CLng(col))
@@ -97,12 +115,14 @@ Sub InsertarColumna(hoja, buscar, posicionColumnaNueva, nombreNuevo)
     hoja.Range(letra & 1).Value = nombreNuevo
 End sub
 
+'agrega una columna al final
 Sub AgregarColumnaAlFinal(hoja, nombreNuevo)
     letra = Col_Letter(hoja, hoja.UsedRange.Columns.Count + 1)
     hoja.Range(letra & ":" & letra).Insert
     hoja.Range(letra & 1).Value = nombreNuevo
 End Sub
 
+'retorna numero de columna de una hoja, headerRow es la fila donde esta la cabecera
 Function GetColumna(hoja, nombreColumna, headerRow)
     For i = 1 To hoja.UsedRange.Columns.Count
         If hoja.Cells(headerRow, i).Value = nombreColumna Then
@@ -112,11 +132,13 @@ Function GetColumna(hoja, nombreColumna, headerRow)
     Next
 End Function
 
+'retorna la letra de una columna, pasandole una hoja y numero de columna
 Function Col_Letter(hoja,lngCol)
     vArr = Split(hoja.Cells(1, lngCol).Address(True, False), "$")
     Col_Letter = vArr(0)
 End Function
 
+'Abre una sesion de sap o retorna el objeto si ya estaba abierta, pasandole el nombre de la conexion
 Function AttachSession(connectionName)
     sessionFound = False
     Set SapGuiAuto = GetObject("SAPGUI") 
@@ -135,7 +157,7 @@ Function AttachSession(connectionName)
     End If
 End Function
 
-
+'Retorna una hoja de un workbook, pasandole el nombre, es case insensitive
 Function GetSheet(wb, sheetName)
     For Each sh In wb.Worksheets
         If trim(lcase(sh.Name)) =  trim(lcase(sheetName)) Then
@@ -145,6 +167,7 @@ Function GetSheet(wb, sheetName)
     Next
 End Function
 
+'para usar excels como bases de datos, no funciona todavia :(
 Sub Copy_ADO(pathOrigen, hojaOrigen, columnasACopiar, rangoDestino, filtros)
     Set conexion = CreateObject("ADODB.Connection")
     tipoFile = ""
@@ -165,8 +188,10 @@ Sub Copy_ADO(pathOrigen, hojaOrigen, columnasACopiar, rangoDestino, filtros)
     rangoDestino.CopyFromRecordset rs
     conexion.Close
 End Sub
-msgbox ReemplazarTildes("holaaáa")
 
+
+
+'para los strings con tildes
 function ReemplazarTildes(stringTildes)
     stringTildes = replace(stringTildes,"á",Chr(225))
     stringTildes = replace(stringTildes,"Á",Chr(193))
@@ -189,6 +214,13 @@ function ReemplazarTildes(stringTildes)
     ReemplazarTildes = stringTildes
 end function
 
+function Dividir(numA,numB)
+    Dividir = numA/ numB
+
+end function
+
+'para compilar reportes
+'si es el primer reporte copiado, copia los headers, si no solo la info
 Sub CompilarReportes(shOrigen, shDestino)
     linea = shDestino.UsedRange.Rows.Count
     If linea = 1 Then
@@ -201,6 +233,9 @@ Sub CompilarReportes(shOrigen, shDestino)
     shDestino.Range("A" & linea).Resize(UBound(arrACopiar, 1), UBound(arrACopiar, 2)).Value = arrACopiar
 End Sub
 
-
-Set oShell = WScript.CreateObject ("WScript.Shell")
-oShell.run ("msg %username% asdadawd")
+'para correr comandos de cmd
+sub ComandoCMD(comando)
+    Set oShell = WScript.CreateObject ("WScript.Shell")
+    ' oShell.run ("msg %username% asdadawd")
+    oShell.run (comando)
+end sub
