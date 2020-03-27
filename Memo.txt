@@ -639,3 +639,33 @@ RESIZEAR RANGE AL TAMAÑO DE UN ARRAY !!!!!!!!!!!11!!11!!!!!!!!!!!!!!!!!1
 shFacturaDestino.Range("A4").Resize(UBound(arrayDestino, 1), UBound(arrayDestino, 2)).Value = arrayDestino
 	
 ==================================================================================================================================================================================================================================================	    
+Async key state
+
+https://nehe.gamedev.net/article/msdn_virtualkey_codes/15009/
+&H A4 (notacion numero hexa)
+
+Private Declare PtrSafe Function GetAsyncKeyState Lib "User32" (ByVal vKey As Long) As Integer
+GetAsyncKeyState(vKey)
+
+Private Sub testAsyncKeyState()
+    Do While True
+        If GetAsyncKeyState(&H25) Then '(leftarrow)
+            Stop
+        End If
+    Loop
+End Sub
+
+============================================================================================================================================================================================================================================================
+Scrollbars
+
+https://www.guru99.com/scroll-up-down-selenium-webdriver.html
+
+==============================================================================================================================================================================================================================================
+
+fucking xpaths
+get element by atributo target e hijo
+
+?driver.FindElementByXPath("//div[@row-id='2061792677' and ./div/@col-id ='202003']").attribute("row-id")
+get element by atributo target y padre
+
+driver.FindElementByXPath("//div[@col-id='202003' and ../@row-id ='2061792677']").attribute("col-id")
