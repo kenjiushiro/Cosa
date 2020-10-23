@@ -1,671 +1,192 @@
-Public Sub OpenBrowser(url as string)
-               
-    'Pide confirmacion al usuario para cerrar todos los procesos de chrome antes de comenzar (Si elige yes retorna 6, si elige no retorna 7)
-     If MsgBox("The bot will close any opened chrome instances, are you sure you want to proceed?", vbYesNo + vbQuestion) = 6 Then      
+SELECT *
+FROM tabla t 
+JOIN otra_tabla ot
+WHERE condicion
+GROUP BY t.columna 
+HAVING condicion
+ORDER BY t.columna DESC 
+___________________________________________________________________________________________________________________________________________________
+UNION 
+select...
+DELETE FROM
+WHERE valor > ALL (lista)
+WHERE valor > ANY (lista)
+WHERE valor > SOME(lista)
 
-Private Sub TaskKill(processName As String)
-    If IsProcessRunning(processName) Then
-        Shell ("taskkill /F /IM " & processName)
-        driver.Wait 2000
-    End If
-End Sub
+___________________________________________________________________________________________________________________________________________________
 
-Private Function IsProcessRunning(process As String) As Boolean
-    Dim objList As Object
+UPDATE
+SET
+WHERE id = (SELECT id FROM...)
 
-    Set objList = GetObject("winmgmts:") _
-        .ExecQuery("select * from win32_process where name='" & process & "'")
+SELECT * 
+FROM products P 
+WHERE NOT EXISTS (
+	SELECT *
+    FROM order_items 
+    WHERE product_id = p.product_id -- condicion
+)
+___________________________________________________________________________________________________________________________________________________
+'subquery en select
+SELECT 
+	client_id,
+    name,
+    (SELECT SUM(invoice_total)
+		FROM invoices
+        WHERE client_id = c.client_id) AS total_sales,
+	(SELECT AVG(invoice_total) 
+		FROM invoices) AS average,
+	(SELECT total_sales) - (SELECT average) AS difference
+FROM clients c
 
-    If objList.Count > 0 Then
-        IsProcessRunning = True
-    Else
-        IsProcessRunning = False
-    End If
+CREATE VIEW nombre_view AS 
+SELECT ...
 
-End Function
+___________________________________________________________________________________________________________________________________________________
 
+DROP PROCEDURE IF EXISTS get_clients;
 
-        'Opcional) Setea el usuario de la instancia de chrome
-        bot.SetProfile ("C:\Users\" &  Environ("Username")  & "\AppData\Local\Google\Chrome\User Data\")
+DELIMITER $$
+CREATE PROCEDURE get_clients()
+BEGIN
+	SELECT * FROM clients;
+END$$
+DELIMITER ;
 
-        'Abre chrome en la url designada      
-        bot.Start "chrome", url
+___________________________________________________________________________________________________________________________________________________
 
-        'Setea el zoom en 100%, ya que si esta en otro nivel puede causar problemas
-        Call zoomFix
-        
-       'Carga la url
-        bot.get "/"
-		
-		'Abrir carpeta
-		Call Shell("explorer.exe" & " " & ThisWorkbook.path, vbNormalFocus)
+USE sql_invoicing;
 
-    Else
-         'Si el usuario elige que no, se cancela la ejecucion de la macro
-         End
-    End If
-End Sub
+DROP PROCEDURE IF EXISTS get_unpaid_invoices_for_client;
 
-==================================================================================================================================================================================================================================================
-Public Sub taskKill(sTaskName)
-'Cierra todos los procesos con el nombre sTaskName (es case sensitive)
-    Dim aux As Integer
-    aux = CreateObject("WScript.Shell").Run("taskkill /f /im " & sTaskName, 0, True)
-End Sub
-==================================================================================================================================================================================================================================================
-Public Sub zoomFix()
-    AppActivate ("Chrome")
-    Application.SendKeys ("^0")
-End Sub
+DELIMITER $$
+CREATE PROCEDURE get_unpaid_invoices_for_client
+(
+	client_id INT,
+    OUT invoices_count INT,
+    OUT invoices_total DECIMAL(9, 2)
+)
+BEGIN
+	SELECT COUNT(*), SUM(invoice_total)
+    INTO invoices_count, invoices_total
+    FROM invoices i
+    WHERE i.client_id = client_id 
+		AND payment_total = 0;
+END $$
+DELIMITER ;
 
-==================================================================================================================================================================================================================================================
-Public ele As WebElement
-Public i As Integer
-Set ele = bot.FindElementById("buttonID")
-i = ele.ExecuteScript("arguments[0].click();", ele)
-==================================================================================================================================================================================================================================================
-'Loop through folders
-Sub LoopThroughFolders()
+set @invoices_count = 0;
+set @invoices_total = 0;
+call sql_invoicing.get_unpaid_invoices_for_client(1, @invoices_count, @invoices_total);
+select @invoices_count, @invoices_total;
 
-    Dim FileSystem As Object
-    Dim HostFolder As String
-    
-    HostFolder = ThisWorkbook.Path
-    
-    Set FileSystem = CreateObject("Scripting.FileSystemObject")
-    DoFolder FileSystem.GetFolder(HostFolder)
+___________________________________________________________________________________________________________________________________________________
 
-End Sub
-==================================================================================================================================================================================================================================================
-Sub DoFolder(Folder)
-    Dim SubFolder
-    Dim File
-    For Each SubFolder In Folder.SubFolders
-        Debug.Print "================="
-        'DoFolder SubFolder
-        Debug.Print SubFolder.Name
-        For Each File In SubFolder.Files
-        ' Operate on each file
-        Debug.Print File
-        Next
-    Next
+VARIABLES
+DECLARE risk_factor DECIMAL(9, 2) DEFAULT 0;
+___________________________________________________________________________________________________________________________________________________
+DELIMITER $$
+CREATE FUNCTION get_risk_factor_for_client
+(
+	client_id INT
+)
 
-End Sub
-==================================================================================================================================================================================================================================================
-' Date functions
+RETURNS DECIMAL(9, 2)
 
-Private Function GetWeek(MyTeDate As String) As String
-    Dim WeekDate As Date
-    WeekDate = CDate(MyTeDate)
-    
-    Select Case Format(shTE.Cells(firstRow, dateColumn), "ddd")
-    Case Is = "Mon"
-        GetWeek = DateAdd("m", 1, MyTeDate)
-    Case Is = "Tue"
-        GetWeek = DateAdd("m", 1, MyTeDate)
-    Case Is = "Wed"
-        GetWeek = DateAdd("m", 1, MyTeDate)
-    Case Is = "Thu"
-        GetWeek = DateAdd("m", 1, MyTeDate)
-    Case Is = "Fri"
-        GetWeek = DateAdd("m", 1, MyTeDate)
-    Case Is = "Sat"
-        GetWeek = DateAdd("m", 1, MyTeDate)
-    Case Is = "Sun"
-        GetWeek = DateAdd("m", 1, MyTeDate)
-End Function
-=================================================================================================================================================================================================================================================
+READS SQL DATA
+MODIFIES SQL DATA
 
-sort by 2 columns
-==================================================================================================================================================================================================================================================
-Sub SortRawDataTable()
-    rawDataSh.Activate
-
-    rawDataSh.Range("A1:N" & rawDataSh.Range("A" & Rows.Count).End(xlUp).Row).Select
-    
-    Selection.Sort Key1:=rawDataSh.Range("A1"), Order1:=xlAscending, Key2:=rawDataSh.Range("E1") _
-        , Order2:=xlAscending, Header:=xlYes, OrderCustom:=1, MatchCase:= _
-        False, Orientation:=xlTopToBottom
-End Sub
-==================================================================================================================================================================================================================================================
-Private Function CleanAmount(totalAmount As String)
-    'Borra todos los caracteres que no pertenecen al precio
-    Const SpecialCharacters As String = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,_, ,"
-    Dim newString As String
-    Dim char As Variant
-    newString = totalAmount
-    
-    For Each char In Split(SpecialCharacters, ",")
-        newString = Replace(newString, char, "")
-    Next
-    newString = Replace(newString, vbCrLf, "")
-    newString = Replace(newString, ",", "")
-   
-    CleanAmount = newString
-End Function
-==================================================================================================================================================================================================================================================
-
-' Buscar archivos por nombre en una carpeta
-Function GetFiles(inputDirectoryToScanForFile, filenameCriteria) As String
-    Dim StrFile As String
-    'Debug.Print "in LoopThroughFiles. inputDirectoryToScanForFile: ", inputDirectoryToScanForFile
-    StrFile = Dir(inputDirectoryToScanForFile & "\*" & filenameCriteria & "*")
-    Do While Len(StrFile) > 0
-        'Debug.Print StrFile
-        GetFiles = ThisWorkbook.Path & "\Files\" & StrFile
-        StrFile = Dir
-
-    Loop
-End Function
-==================================================================================================================================================================================================================================================
-'check if a window exists
-Private Declare PtrSafe Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
-or
-Private Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
-Sub WinExist(windowName As String)
-    Dim WinHwnd
-    WinHwnd = FindWindow(vbNullString, windowName)
-    If WinHwnd = 0 Then
-        MsgBox ("Can't find window titled " & windowName)
-    Else
-         MsgBox ("Hwnd of window is: " & WinHwnd)
-    End If
-End Sub
-==================================================================================================================================================================================================================================================
-buscar en columna
-Set Existe = Columns(MyTeEIDColumnNumber).Find(EnterpriseID, lookat:=xlWhole)
-==================================================================================================================================================================================================================================================
-'Check if file exists
-Function FileExists(path As String) As Boolean
-    Dim fsoFSO
-    Set fsoFSO = CreateObject("Scripting.FileSystemObject")
-    FileExists = fsoFSO.FileExists(path)
-       
-End Function
-==================================================================================================================================================================================================================================================
-'Set workbook if exists, else returns nothing
-Function GetWorkbook(ByVal sFullName As String) As Workbook
-
-    Dim sFile As String
-    Dim wbReturn As Workbook
-    
-    sFile = Dir(sFullName)
-    
-    On Error Resume Next
-    Set wbReturn = Workbooks(sFile)
-    On Error GoTo 0
-    
-    If wbReturn Is Nothing Then
-        Set wbReturn = Workbooks.Open(sFullName)
-    End If
-    
-    On Error GoTo 0
-    Set GetWorkbook = wbReturn
-End Function
-
-
-==================================================================================================================================================================================================================================================
-'Download images
-
-Public Declare Function URLDownloadToFile Lib "urlmon" Alias _
-   "URLDownloadToFileA" (ByVal pCaller As Long, _
-   ByVal szURL As String, _
-   ByVal szFileName As String, _
-   ByVal dwReserved As Long, _
-   ByVal lpfnCB As Long) As Long
-==================================================================================================================================================================================================================================================
-Public Sub GURoL(url As String, FileName As String)
-Dim lngRetVal As Long
-    lngRetVal = URLDownloadToFile(0, url, FileName, 0, 0)
-    If lngRetVal <> 0 Then
-    MsgBox "GURol godo: Can't download from " & url & " to " & FileName
-    End If
-End Sub
-==================================================================================================================================================================================================================================================
-
-Public Function GetWorkbook(ByVal sFullName As String) As Workbook
-
-    Dim sFile As String
-    Dim wbReturn As Workbook
-
-    sFile = Dir(sFullName)
-
-    On Error Resume Next
-        Set wbReturn = Workbooks(sFile)
-
-        If wbReturn Is Nothing Then
-            Set wbReturn = Workbooks.Open(sFullName)
-        End If
-    On Error GoTo 0
-
-    Set GetWorkbook = wbReturn
-
-End Function
-==================================================================================================================================================================================================================================================
-Sub SelectFile()
-    Call SetThisWb
-    Dim SelectFile As FileDialog
-    Set SelectFile = Application.FileDialog(msoFileDialogFilePicker) ' msoFileDialogFolderPicker)
-    
-    If SelectFile.Show = 0 Then
-        MsgBox "Select I&D report file", , "Select File"
-        Exit Sub
-    Else
-        thisSh.Range("C14").Value = SelectFile.SelectedItems(1)
-    End If
-End Sub
-==================================================================================================================================================================================================================================================
-Private Sub CreateFolder(folderPath As String)
-    Dim fsoFSO
-    Set fsoFSO = CreateObject("Scripting.FileSystemObject")
-    If Not fsoFSO.FolderExists(folderPath) Then
-       MkDir folderPath
-    End If
-End Sub
-==================================================================================================================================================================================================================================================
-
-Sub ArrastrarFormatoCeldas()
-    Dim lastRow As Long
-    
-    lastRow = FTESh.Range("A" & Rows.Count).End(xlUp).row
-    FTESh.Range("S2:U2").AutoFill FTESh.Range("S2:U" & lastRow), xlFillDefault
-    FTESh.Range("M2").AutoFill FTESh.Range("M2:M" & lastRow), xlFillDefault
-    FTESh.Range("L2:L" & lastRow).Value = MonthName(Month(Now), True)
-End Sub
-==================================================================================================================================================================================================================================================
-Function Col_Letter(lngCol As Long) As String
-    Dim vArr
-    vArr = Split(Cells(1, lngCol).Address(True, False), "$")
-    Col_Letter = vArr(0)
-End Function
-==================================================================================================================================================================================================================================================
-
-Private Function GetColumnNumber(hoja As Worksheet, columnName As String, Optional headerRow As Long = 1) As Long
-    Dim columnAux As Long
-    Dim lastCol As Long
-    lastCol = hoja.Cells(headerRow, Columns.Count).End(xlToLeft).Column
-    GetColumnNumber = 0
-    For columnAux = 1 To lastCol
-        If hoja.Cells(headerRow, columnAux).Value = columnName Then
-            GetColumnNumber = columnAux
-            Exit For
-        End If
-    Next columnAux
-    GetColumnNumber = columnAux
-End Function
-
-
-==================================================================================================================================================================================================================================================
-'change site attributes
-
-    Set ele = bot.FindElementByXPath("//*[@id='locationslider']")
-    i = ele.ExecuteScript("arguments[0].style = 'width: 20%;'", ele)
-
+BEGIN 
+	DECLARE risk_factor DECIMAL(9, 2) DEFAULT 0;
+	DECLARE invoices_total DECIMAL(9, 2);
+	DECLARE invoices_count INT;
 	
-	'Relative xPaths
-	https://www.w3schools.com/xml/xpath_axes.asp
+	SELECT COUNT(*), SUM(invoice_total)
+	INTO invoices_count, invoices_total
+	FROM invoices i
+	WHERE i.client_id = client_id;
 	
-==================================================================================================================================================================================================================================================
-Function RangetoHTML(rng As Range)
-' Changed by Ron de Bruin 28-Oct-2006
-' Working in Office 2000-2016
-    Dim fso As Object
-    Dim ts As Object
-    Dim TempFile As String
-    Dim TempWB As Workbook
-
-    TempFile = Environ$("temp") & "\" & Format(Now, "dd-mm-yy h-mm-ss") & ".htm"
-
-    'Copy the range and create a new workbook to past the data in
-    rng.Copy
-    Set TempWB = Workbooks.Add(1)
-    With TempWB.Sheets(1)
-        .Cells(1).PasteSpecial Paste:=8
-        .Cells(1).PasteSpecial xlPasteValues, , False, False
-        .Cells(1).PasteSpecial xlPasteFormats, , False, False
-        .Cells(1).Select
-        Application.CutCopyMode = False
-        On Error Resume Next
-        .DrawingObjects.Visible = True
-        .DrawingObjects.Delete
-        On Error GoTo 0
-    End With
-
-    'Publish the sheet to a htm file
-    With TempWB.PublishObjects.Add( _
-         SourceType:=xlSourceRange, _
-         Filename:=TempFile, _
-         Sheet:=TempWB.Sheets(1).Name, _
-         Source:=TempWB.Sheets(1).UsedRange.Address, _
-         HtmlType:=xlHtmlStatic)
-        .Publish (True)
-    End With
-
-    'Read all data from the htm file into RangetoHTML
-    Set fso = CreateObject("Scripting.FileSystemObject")
-    Set ts = fso.GetFile(TempFile).OpenAsTextStream(1, -2)
-    RangetoHTML = ts.readall
-    ts.Close
-    RangetoHTML = Replace(RangetoHTML, "align=center x:publishsource=", _
-                          "align=left x:publishsource=")
-
-    'Close TempWB
-    TempWB.Close savechanges:=False
-
-    'Delete the htm file we used in this function
-    Kill TempFile
-
-    Set ts = Nothing
-    Set fso = Nothing
-    Set TempWB = Nothing
-End Function
-==================================================================================================================================================================================================================================================
-
-Private Sub SaveRngAsJPG(Rng As Range, FileName As String)
-    Dim Cht As Chart, bScreen As Boolean, Shp As Shape
-    bScreen = Application.ScreenUpdating
-    Application.ScreenUpdating = False
-    Set Cht = Workbooks.Add(xlChart).Charts(1)
-    Cht.ChartArea.Clear
-    Rng.CopyPicture xlScreen, xlPicture
-    Cht.Paste
-    
-    With Cht.Shapes(1)
-        .Left = 0
-        .Top = 0
-        .Width = Cht.ChartArea.Width
-        .Height = Cht.ChartArea.Height
-    End With
-    Cht.Export FileName, "JPEG", False
-    Cht.Parent.Close False
-    Application.ScreenUpdating = bScreen
-End Sub
-
-==================================================================================================================================================================================================================================================
-Private Function IsProcessRunning(process As String) As Boolean
-    Dim objList As Object
-
-    Set objList = GetObject("winmgmts:") _
-        .ExecQuery("select * from win32_process where name='" & process & "'")
-
-    If objList.Count > 0 Then
-        IsProcessRunning = True
-    Else
-        IsProcessRunning = False
-    End If
-
-End Function
-==================================================================================================================================================================================================================================================
-'CONTEXT MENUUUUUUUUUUUUUUU
-Private Sub Workbook_Deactivate()
-    On Error Resume Next
-        With Application
-            .CommandBars("Cell").Controls("DarFormato").Delete
-        End With
-    On Error GoTo 0
-End Sub
- ==================================================================================================================================================================================================================================================
-Private Sub Workbook_SheetBeforeRightClick(ByVal sh As Object, ByVal Target As Range, Cancel As Boolean)
-    Dim cmdBtn As CommandBarButton
-    On Error Resume Next
-        With Application
-            .CommandBars("Cell").Controls("DarFormato").Delete
-            Set cmdBtn = .CommandBars("Cell").Controls.Add(Temporary:=True)
-        End With
- 
-        With cmdBtn
-           .Caption = "DarFormato"
-           .Style = msoButtonCaption
-           .OnAction = "DarFormato"
-        End With
-    On Error GoTo 0
-End Sub
-==================================================================================================================================================================================================================================================
-Function Suma(ParamArray aArgumentsArray() As Variant) As String
-
-    Dim vArg As Variant
-    Suma = ""
-    For Each vArg In aArgumentsArray
-       Suma = Suma & vArg
-       
-    Next vArg
-End Function
-==================================================================================================================================================================================================================================================
-'Incluir libreria Microsoft VBScript Regular Expressions 5.5
-Public Function ExtraerFecha(texto As String) As String
-
-    Dim reg As New RegExp
-    Dim patron As String
-    Dim reemplazo As String
-    
-    patron = fecha
-    patron = "(.+)([0-9]{2}[\/\-][0-9]{2}[\/\-][0-9]{2,4})(.+)"
-    reemplazo = "$2"
-    reg.Pattern = patron
-    
-    ExtraerFecha = reg.Test(texto)
-    If reg.Test(texto) Then
-        ExtraerFecha = reg.Replace(texto, reemplazo)
-    End If
-
-End Function
-
-==================================================================================================================================================================================================================================================
-
-
-Public Function RegExp(texto As String) As String
-
-    Dim reg As New RegExp
-    Dim patron As String
-    Dim reemplazo As String
-    
-    patron = fecha
-    patron = "a."
-    reemplazo = "$1"
-    reg.Pattern = patron
-    
-    RegExp = reg.Test(texto)
-    'If reg.Test(texto) Then
-    '    RegExp = reg.Replace(texto, reemplazo)
-    'End If
-
-End Function
-==================================================================================================================================================================================================================================================
-
-Public Declare PtrSafe Function GetForegroundWindow Lib "user32" _
-    () As Long
-Public Declare PtrSafe Function GetWindowText Lib "user32" _
-    Alias "GetWindowTextA" (ByVal hwnd As Long, _
-    ByVal lpString As String, ByVal cch As Long) As Long
-Function GetActiveWindowName()
-    Dim WinText As String
-    Dim hwnd As Long
-    Dim L As Long
-    hwnd = GetForegroundWindow()
-    WinText = String(255, vbNullChar)
-    L = GetWindowText(hwnd, WinText, 255)
-    WinText = Left(WinText, InStr(1, WinText, vbNullChar) - 1)
-    Debug.Print L, WinText
-End Function
-
-
-==================================================================================================================================================================================================================================================
-
-
-
-Public Declare PtrSafe Function GetCursorPos Lib "user32" (lpPoint As POINTAPI) As Long
-' Create custom variable that holds two integers
-Type POINTAPI
-   Xcoord As Long
-   Ycoord As Long
-End Type
-
-Sub GetCursorPosDemo()
-Dim llCoord As POINTAPI
-' Get the cursor positions
-GetCursorPos llCoord
-' Display the cursor position coordinates
-MsgBox "X Position: " & llCoord.Xcoord & vbNewLine & "Y Position: " & llCoord.Ycoord
-End Sub
-
-==================================================================================================================================================================================================================================================
-
-'MAILSSSSSSSSSSSSSSSSSSSSS
-'libreria Microsoft outlook 16.0 object library
-
-Sub GetMails()
-    Dim olApp As New Outlook.Application
-    Dim olNs As Namespace
-    Set olNs = olApp.GetNamespace("MAPI")
-    Dim receivedSh As Worksheet
-    Set receivedSh = ThisWorkbook.Sheets("Received")
-    
-    
-    Dim olInbox As MAPIFolder
-    Set olInbox = olNs.GetDefaultFolder(olFolderInbox)
-    
-    Dim filter As String
-    
-    'filter = "@SQL=" & Chr(34) & "urn:schemas:httpmail:hasattachment" & _
-    '                   Chr(34) & "=1 AND " & _
-    '                   Chr(34) & "urn:schemas:httpmail:read" & _
-    '                   Chr(34) & "=0"
-                       
-    filter = "@SQL=" & Chr(34) & "urn:schemas:httpmail:read" & _
-                       Chr(34) & "=0"
-                       
-    Dim mail As Outlook.MailItem
-    Dim mailObj As Object
-    
-    'Loop through every unread item
-    For Each mailObj In olInbox.Items.Restrict(filter)
-        If mailObj.Class = olMail Then
-            Set mail = mailObj
-            corpo = mail.body
-            Call ListMail(receivedSh, mail.subject, mail.SenderEmailAddress, mail.HTMLBody)
-            mail.UnRead = True
-        End If
-    Next mailObj
-End Sub
-==================================================================================================================================================================================================================================================
-'ARRAAAAAAAAAAYS
-
-Dim arr As Variant
-Dim linea As Variant
-
-
-arr = Sheet1.Range("A1").CurrentRegion
-
-==================================================================================================================================================================================================================================================
-
-Dim arr As Variant
-Dim linea As Variant
-
-arr = Split(mail.HTMLBody, vbCrLf)
-For Each linea In arr
-	If linea <> "" Then
-		Debug.Print linea
-	End If
-Next linea
-
-==================================================================================================================================================================================================================================================
-
-Sub ResizeArrayToRange()
-    Dim arrayLinea As Variant
-    Dim i As Long
-    Dim Destination As Range
-    
-    For i = 2 To 1000
-        arrayLinea = Split(Sheet1.Range("A" & i).Value, ",")
-        Set Destination = Range("A" & i)
-        Set Destination = Destination.Resize(1, UBound(arrayLinea))
-        Destination.Value = arrayLinea
-    Next i
-End Sub
-
-==================================================================================================================================================================================================================================================
-Timer en milisegundos
-
-
-Private mlngStart As Long
-Private Declare Function GetTickCount Lib "kernel32" () As Long
-
-Public Sub StartTimer()
-    mlngStart = GetTickCount
-End Sub
-
-Public Function EndTimer() As Long
-    EndTimer = (GetTickCount - mlngStart)
-End Function
-You use the code as follows:
-
-Dim sw as StopWatch
-Set sw = New StopWatch
-sw.StartTimer
-
-' Do whatever you want to time here
-
-Debug.Print "That took: " & sw.EndTimer & "milliseconds"
-
-
-==================================================================================================================================================================================================================================================
-
-function ReemplazarTildes(stringTildes)
-    stringTildes = replace(stringTildes,"á",Chr(225))
-    stringTildes = replace(stringTildes,"Á",Chr(193))
-    
-    stringTildes = replace(stringTildes,"é",Chr(233))
-    stringTildes = replace(stringTildes,"É",Chr(201))
-    
-    stringTildes = replace(stringTildes,"í",Chr(237))
-    stringTildes = replace(stringTildes,"Í",Chr(205))
-    
-    stringTildes = replace(stringTildes,"ó",Chr(243))
-    stringTildes = replace(stringTildes,"Ó",Chr(211))
-    
-    stringTildes = replace(stringTildes,"ú",Chr(250))
-    stringTildes = replace(stringTildes,"Ú",Chr(218))
-
-    stringTildes = replace(stringTildes,"°",Chr(176))
-    stringTildes = replace(stringTildes,"º",Chr(186))
-
-    ReemplazarTildes = stringTildes
-end function
-
-==================================================================================================================================================================================================================================================
-
-RESIZEAR RANGE AL TAMAÑO DE UN ARRAY !!!!!!!!!!!11!!11!!!!!!!!!!!!!!!!!1
-
-shFacturaDestino.Range("A4").Resize(UBound(arrayDestino, 1), UBound(arrayDestino, 2)).Value = arrayDestino
+	SET risk_factor  = invoices_total / invoices_count;
 	
-==================================================================================================================================================================================================================================================	    
-Async key state
 
-https://nehe.gamedev.net/article/msdn_virtualkey_codes/15009/
-&H A4 (notacion numero hexa)
+	RETURN IFNULL(risk_factor, 0);
 
-Private Declare PtrSafe Function GetAsyncKeyState Lib "User32" (ByVal vKey As Long) As Integer
-GetAsyncKeyState(vKey)
+END $$
+DELIMITER ;
+___________________________________________________________________________________________________________________________________________________
 
-Private Sub testAsyncKeyState()
-    Do While True
-        If GetAsyncKeyState(&H25) Then '(leftarrow)
-            Stop
-        End If
-    Loop
-End Sub
 
-============================================================================================================================================================================================================================================================
-Scrollbars
+___________________________________________________________________________________________________________________________________________________
 
-https://www.guru99.com/scroll-up-down-selenium-webdriver.html
+DROP TRIGGER IF EXISTS payments_after_delete;
 
-==============================================================================================================================================================================================================================================
+DELIMITER $$
+CREATE TRIGGER payments_after_delete
+	AFTER DELETE ON payments
+	FOR EACH ROW
+BEGIN
+	UPDATE invoices
+    SET payment_total = payment_total - OLD.amount
+    WHERE invoice_id = OLD.invoice_id;
+END $$
+DELIMITER ;
+___________________________________________________________________________________________________________________________________________________
 
-fucking xpaths
-get element by atributo target e hijo
+SHOW TRIGGERS LIKE "payments$"
+___________________________________________________________________________________________________________________________________________________
+DROP EVENT IF EXISTS yearly_delete_stale_audit_rows;
 
-?driver.FindElementByXPath("//div[@row-id='2061792677' and ./div/@col-id ='202003']").attribute("row-id")
-get element by atributo target y padre
+DELIMITER $$
+CREATE EVENT yearly_delete_stale_audit_rows
+ON SCHEDULE 
+	-- AT '2020-12-12' -- para ejecutarlo 1 vez
+    EVERY 1 YEAR STARTS '2020-01-01' ENDS '2030-01-01'
+DO BEGIN
+	DELETE FROM payments_audit 
+    WHERE action_date < NOW() - INTERVAL 1 YEAR;
+END $$
 
-driver.FindElementByXPath("//div[@col-id='202003' and ../@row-id ='2061792677']").attribute("col-id")
+DELIMITER ;
+
+___________________________________________________________________________________________________________________________________________________
+Transacciones
+
+USE sql_store;
+
+START TRANSACTION;
+
+INSERT INTO orders(customer_id, order_date, status)
+VALUES (1, "2020-01-01", 1);
+
+INSERT INTO order_items
+VALUES (LAST_INSERT_ID(), 1, 1, 1);
+
+ROLLBACK; -- PARA DESHACER LOS CAMBIOS MANUALMENTE
+
+
+COMMIT;
+
+___________________________________________________________________________________________________________________________________________________
+Isolation levels (concurrency)
+
+SHOW VARIABLES LIKE 'transaction_isolation';
+
+SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
+SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+___________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+___________________________________________________________________________________________________________________________________________________
+
+
+
+
+___________________________________________________________________________________________________________________________________________________
+
+
